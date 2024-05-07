@@ -31,7 +31,7 @@ function App() {
   return (
     <>
       <Toaster />
-      <Routes>
+      <Routes basename={process.env.PUBLIC_URL}>
         <Route path="/" element={<Login />} />
         <Route path="/forgot_password" element={<ChangePassword />} />
         <Route path="/reset_password" element={<ResetPassword />} />
