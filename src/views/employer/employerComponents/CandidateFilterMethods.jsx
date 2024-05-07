@@ -16,19 +16,23 @@ const CandidateFilterMethods = () => {
   }
   return (
       <div className="row gy-2">
-        <div className="col-12 col-sm-6 col-lg-4">
-          <div className="dropdown employer-custom-dropdown">
+        <div className="col-12 col-md-6 col-lg-4 ">
+          <div className="dropdown employer-custom-dropdown w-100">
             <button
-              className="btn dropdown-toggle w-100 filter-section px-4 fw-bold"
+              className="btn dropdown-toggle filter-section px-4 fw-bold d-flex flex-wrap w-100 align-items-center choose-dropdown"
               type="button"
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
-              {jobListContent.jobType}<span className="employer-jobList-date">{jobListContent.date}</span>
+              <span className="text-secondary w-25 text-wrap">Choose job role</span>
+                <span className="w-75 ps-1">
+                  {jobListContent.jobType}
+                  <span className="employer-jobList-date">
+                    {jobListContent.date}
+                  </span>
+                </span>
             </button>
-            <span className="dropdown-floating-label rounded-top-1 text-secondary">Choose job role</span>
-
-            <ul className="dropdown-menu w-100">
+            <ul className="dropdown-menu w-75">
               <li>
                 <a className="dropdown-item dropdown-jobList" onClick={()=>handleJobList("Data quality manager","(10-2-2024)")}>Data quality manager <span className="employer-jobList-date">(10-2-2024)</span></a>
               </li>
@@ -45,17 +49,20 @@ const CandidateFilterMethods = () => {
           </div>
         </div>
 
-        <div className="col-12 col-sm-6 col-lg-4">
+        <div className="col-12 col-md-6 col-lg-4">
           <div className="dropdown employer-custom-dropdown">
             <button
-              className="btn btn-secondary dropdown-toggle w-100 filter-section fw-bold "
+              className="btn dropdown-toggle w-100 filter-section fw-bold d-flex flex-wrap align-items-center choose-dropdown"
               type="button"
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
-              {jobStatus}
+               <span className="text-secondary w-25 text-wrap">Choose category</span>
+                <span className="w-75 ps-2">
+                  {jobStatus}
+                </span>
+                
             </button>
-            <span className="dropdown-floating-label rounded-top-1 text-secondary">Choose category</span>
             <ul className="dropdown-menu w-100">
               <li>
                 <a className="dropdown-item dropdown-jobSort" onClick={()=>handleJobStatus("Applied")}>Applied</a>

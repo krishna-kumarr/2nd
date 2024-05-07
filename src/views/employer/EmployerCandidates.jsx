@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IoMdClose } from "react-icons/io";
 import { FiFilter } from "react-icons/fi";
 import CandidateFilterWidget from "./employerComponents/CandidateFilterWidget";
@@ -9,17 +9,33 @@ import CandidateRightContent from "./employerComponents/CandidateRightContent";
 
 const EmployerCandidates = () => {
   const [openWidget, setOpenWidget] = useState(false);
+  const [smallDevice,setSmallDevice] = useState(false)
+  
+  useEffect(()=>{
+    const handleResize = () => {
+      if(window.innerWidth<=992){
+        setSmallDevice(true);
+      }else{
+        setSmallDevice(false)
+      }
+    };
 
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  },[])
 
   return (
     <>
-      <div className="homePage-backgroundColor py-2 overflow-hidden">
+      <div className={smallDevice ? "homePage-backgroundColor overflow-scroll": "homePage-backgroundColor pt-2 overflow-hidden"}>
         <div className="container-fluid px-sm-2 px-md-3 px-xl-5">
           <div className="col-12 pt-3 pb-2">
             <CandidateFilterMethods />
           </div>
 
-          <div className="mt-1 setting-employer-row-height py-1">
+          <div className={smallDevice ? "mt-1 py-1" : "mt-1 setting-employer-row-height py-1"}>
             <div className="row h-100">
               <div className="col-12 col-md-12 col-lg-3 h-100 overflow-scroll">
                 <CandidateLeftContent />

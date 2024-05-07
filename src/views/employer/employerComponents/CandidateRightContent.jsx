@@ -16,6 +16,7 @@ const CandidateRightContent = () => {
       answer:'Y or N'
     }
   ]
+
   
   return (
     <>
