@@ -1,6 +1,6 @@
 import React from "react";
-import { CiLocationOn } from "react-icons/ci";
-import { PiBriefcaseThin } from "react-icons/pi";
+import { GrLocation } from "react-icons/gr";
+import { HiOutlineBriefcase } from "react-icons/hi2";
 
 const CandidateCard = ({ applicationStatus,name,role,location }) => {
   return (
@@ -26,11 +26,11 @@ const CandidateCard = ({ applicationStatus,name,role,location }) => {
 
                 <div className="pt-2">
                 <p className="mb-0 employer-card-candidate-role">
-                  <span className="pe-1"><PiBriefcaseThin/></span>
+                  <span className="pe-2"><HiOutlineBriefcase/></span>
                   {role}
                 </p>
                 <p className="mb-0 employer-card-candidate-location">
-                  <span className="pe-1"><CiLocationOn/></span>
+                  <span className="pe-2"><GrLocation/></span>
                   {location}
                 </p>
                 </div>

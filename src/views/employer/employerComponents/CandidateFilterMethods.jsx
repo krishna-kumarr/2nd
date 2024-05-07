@@ -19,7 +19,7 @@ const CandidateFilterMethods = () => {
         <div className="col-12 col-sm-6 col-lg-4">
           <div className="dropdown employer-custom-dropdown">
             <button
-              className="btn dropdown-toggle w-100 border-0 outline-none filter-section px-4 fw-bold"
+              className="btn dropdown-toggle w-100 filter-section px-4 fw-bold"
               type="button"
               data-bs-toggle="dropdown"
               aria-expanded="false"
@@ -48,7 +48,7 @@ const CandidateFilterMethods = () => {
         <div className="col-12 col-sm-6 col-lg-4">
           <div className="dropdown employer-custom-dropdown">
             <button
-              className="btn btn-secondary dropdown-toggle w-100 border-0 outline-none filter-section fw-bold "
+              className="btn btn-secondary dropdown-toggle w-100 filter-section fw-bold "
               type="button"
               data-bs-toggle="dropdown"
               aria-expanded="false"
@@ -91,7 +91,7 @@ const CandidateFilterMethods = () => {
 
             <Input
               type="text"
-              className="form-control form-control-lg searchInput candidate-searchInput border-0 px-5 py-0"
+              className="form-control form-control-lg searchInput candidate-searchInput border-0 px-5 py-0 searchInput-border"
               placeHolder="Search by name"
               ariaLabel="default input example"
               testId="searchResult"
