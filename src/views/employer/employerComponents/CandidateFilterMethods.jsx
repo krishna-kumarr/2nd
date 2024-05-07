@@ -26,6 +26,8 @@ const CandidateFilterMethods = () => {
             >
               {jobListContent.jobType}<span className="employer-jobList-date">{jobListContent.date}</span>
             </button>
+            <span className="dropdown-floating-label rounded-top-1 text-secondary">Choose job role</span>
+
             <ul className="dropdown-menu w-100">
               <li>
                 <a className="dropdown-item dropdown-jobList" onClick={()=>handleJobList("Data quality manager","(10-2-2024)")}>Data quality manager <span className="employer-jobList-date">(10-2-2024)</span></a>
@@ -46,13 +48,14 @@ const CandidateFilterMethods = () => {
         <div className="col-12 col-sm-6 col-lg-4">
           <div className="dropdown employer-custom-dropdown">
             <button
-              className="btn btn-secondary dropdown-toggle w-100 border-0 outline-none filter-section fw-bold"
+              className="btn btn-secondary dropdown-toggle w-100 border-0 outline-none filter-section fw-bold "
               type="button"
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
               {jobStatus}
             </button>
+            <span className="dropdown-floating-label rounded-top-1 text-secondary">Choose category</span>
             <ul className="dropdown-menu w-100">
               <li>
                 <a className="dropdown-item dropdown-jobSort" onClick={()=>handleJobStatus("Applied")}>Applied</a>

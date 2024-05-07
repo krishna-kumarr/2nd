@@ -21,12 +21,12 @@ const InfoEditCard = ({
                     <div className="ms-5 mt-3 profile-descriptions">
                         {
                             cardHeading === "Preference" ?                                
-                                    <p className={pageContentLoaded ? 'text-break ms-1 employer-card-Content' : 'text-break placeholder rounded-2 w-100 '}>{cardContent ? cardContent : placeholder}</p>
+                                    <p className={pageContentLoaded ? 'text-break ms-1' : 'text-break placeholder rounded-2 w-100 '}>{cardContent ? cardContent : placeholder}</p>
                                     : null
                         }
                         {
                             cardHeading === "About" ?
-                                    <p className={pageContentLoaded ? 'text-break ms-1 employer-card-Content' : 'text-break placeholder rounded-2 w-100'}>{cardContent ? cardContent : placeholder}</p>
+                                    <p className={pageContentLoaded ? 'text-break ms-1' : 'text-break placeholder rounded-2 w-100'}>{cardContent ? cardContent : placeholder}</p>
                                     :
                                     null
                         }

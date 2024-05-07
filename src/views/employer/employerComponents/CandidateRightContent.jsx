@@ -45,13 +45,15 @@ const CandidateRightContent = () => {
                 <div className="col-lg-6 col-xxl-4">
                   <button
                     type="button"
-                    className="btn btn-sm px-5 border select-candidate"
+                    className="btn btn-sm px-5 border select-candidate me-1"
+                    title="Accept"
                   >
                     &#x2713;
                   </button>
                   <button
                     type="button"
                     className="btn btn-sm px-5 border reject-candidate"
+                    title="Reject"
                   >
                     &#x2715;
                   </button>

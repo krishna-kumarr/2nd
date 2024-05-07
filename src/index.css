@@ -879,7 +879,7 @@ input:checked + .slider:before {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  padding: .7rem 1rem!important;
+  padding: 1rem 1rem .4rem 1rem!important;
 }
 .filter-section.form-select option {
   padding: 15px !important;
@@ -1998,14 +1998,14 @@ button[disabled] {
 }
 
 .employer-card-candidate-name {
-  font-size: .8rem;
+  font-size: 1rem;
   font-weight: 700;
 }
 
 .employer-card-candidate-location,
 .employer-card-candidate-role {
-  font-size: .8rem;
-  font-weight: 200;
+  font-size: .9rem;
+  font-weight: 400;
 }
 
 .employer-card-Content-heading{
@@ -2038,11 +2038,13 @@ button[disabled] {
 }
 
 .select-candidate {
+  padding: .34rem 0;
   background-color: #e4f7e6;
   color: #1f662c;
 }
 
 .reject-candidate {
+  padding: .34rem 0;  
   background-color: rgb(255, 218, 218);
   color: rgb(255, 99, 99);
 }
@@ -2101,4 +2103,12 @@ button[disabled] {
   position: absolute;
   top: 0;
   right: 0;
+}
+
+.dropdown-floating-label{
+  position: absolute;
+  top: 0rem;
+  left: 0;
+  padding: 0 1rem 0 1rem;
+  font-size: .65rem;
 }

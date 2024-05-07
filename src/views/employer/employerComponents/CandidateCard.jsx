@@ -25,8 +25,14 @@ const CandidateCard = ({ applicationStatus,name,role,location }) => {
                 <p className="mb-0 employer-card-candidate-name">{name}</p>
 
                 <div className="pt-2">
-                <p className="mb-0 employer-card-candidate-role"><PiBriefcaseThin/>{role}</p>
-                <p className="mb-0 employer-card-candidate-location"><CiLocationOn />{location}</p>
+                <p className="mb-0 employer-card-candidate-role">
+                  <span className="pe-1"><PiBriefcaseThin/></span>
+                  {role}
+                </p>
+                <p className="mb-0 employer-card-candidate-location">
+                  <span className="pe-1"><CiLocationOn/></span>
+                  {location}
+                </p>
                 </div>
               </div>
               <div className="appliedOrSaved col-7 col-md-8 col-xl-6 p-0">

@@ -194,7 +194,7 @@ const CandidateProfile = () => {
                   <div
                     className={
                       pageContentLoaded
-                        ? "mt-3 d-flex justify-content-center align-items-center h-75 p-5 pt-3 text-grey ms-2 employer-card-Content"
+                        ? "mt-3 d-flex justify-content-center align-items-center h-75 p-5 pt-3 text-grey ms-2"
                         : "mt-3 d-flex justify-content-center align-items-center h-75 p-5 pt-3 text-grey placeholder mb-5 ms-5 rounded-2"
                     }
                   >

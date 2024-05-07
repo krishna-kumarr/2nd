@@ -64,7 +64,7 @@ const CandidateLeftContent = () => {
       <div className="sticky-top top-0 homePage-backgroundColor">
         <div className="w-100 d-none d-lg-block">
           <div className="card rounded-3 border-0">
-            <div className="card-body p-0">
+            <div className="card-body p-0 cursorPointer">
               <div
                 className="row p-0 filter-closet py-2 px-3"
                 onClick={() => setOpen(!open)}
@@ -120,7 +120,7 @@ const CandidateLeftContent = () => {
                   </div>
                   <div className="w-75 px-0">
                     <button
-                      className="btn btn-secondary showing-Persoon-content dropdown-toggle border-0 outline-none filter-section w-100 py-2"
+                      className="btn btn-secondary showing-Persoon-content dropdown-toggle border-0 outline-none w-100 py-2"
                       type="button"
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
