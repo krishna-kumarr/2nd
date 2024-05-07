@@ -9,7 +9,7 @@ const InfoEditCard = ({
 }) => {
     return (
         <>
-            <div className={window.location.pathname==="/employer_dashboard/candidates" ? "card border-0 " : "card mt-3 border-0 shadow-sm rounded-4"}>
+            <div className={window.location.pathname==="/2nd/employer_dashboard/candidates" ? "card border-0 " : "card mt-3 border-0 shadow-sm rounded-4"}>
                 <div className="card-body ">
                     <div className="d-flex justify-content-between ms-1">
                         <label className="profile-side-headers d-flex align-items-center placeholder-glow ">

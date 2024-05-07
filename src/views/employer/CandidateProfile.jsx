@@ -64,6 +64,8 @@ const CandidateProfile = () => {
 
     (async () => getPoolPageDetails())();
 
+    console.log(window.location.pathname==='/2nd/employer_dashboard/candidates')
+
   }, [pageRefresh]);
 
   return (
