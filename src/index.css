@@ -1885,13 +1885,13 @@ button[disabled] {
 }
 
 .employer-filter.dropdown-item:hover {
-  background-color: #dad6d6;
+  background-color: #e38212;
   color: white;
   transition: all 0.2s linear;
 }
 
 .employer-filter.dropdown-item.active {
-  background-color: #dad6d6;
+  background-color: #e38212;
   color: white;
 }
 
@@ -1977,7 +1977,7 @@ button[disabled] {
 }
 
 .employer-custom-dropdown .dropdown-menu .dropdown-item:hover {
-  background: #dad6d6;
+  background: #e38212;
   color: #fff;
   transition: 0.1s linear;
   cursor: pointer;
@@ -2024,8 +2024,8 @@ button[disabled] {
 }
 
 .employer-card-Content{
-  font-size: .9rem;
-  font-weight: 300;
+  font-size: 1rem;
+  font-weight: 400;
 }
 
 .employer-card-skills{

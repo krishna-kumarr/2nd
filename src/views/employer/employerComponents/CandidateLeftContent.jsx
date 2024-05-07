@@ -157,6 +157,9 @@ const CandidateLeftContent = () => {
             />
           })
         }
+        <div className="px-3">
+        <button type="button" className="btn btn-transparent border border-brand-color w-100">Load More</button>
+        </div>
       </div>
     </>
   );
