@@ -1,0 +1,29 @@
+.typeOfOrganization-field .dropdown-toggle{
+    padding: 0.7rem 0.5rem !important ;
+    margin-bottom: 1rem;
+}
+
+.text-custom-black{
+  color: #212529;
+}
+
+.typeOfOrganization-field{
+  position: relative;
+}
+
+.typeOfOrganization-field span{
+  font-size: 0.875rem;
+}
+
+.typeOfOrganization-field .special-label {
+  position: absolute;
+  z-index: 1;
+  top: -7px;
+  left: 10px !important;
+  display: block;
+  background: white;
+  padding: 0 5px;
+  font-size: 13px;
+  white-space: nowrap;
+  color: #6c757d;
+}
