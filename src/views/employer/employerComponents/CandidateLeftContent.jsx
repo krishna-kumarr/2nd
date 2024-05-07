@@ -127,7 +127,7 @@ const CandidateLeftContent = () => {
                     >
                       sort by
                     </button>
-                    <ul className="dropdown-menu w-100">
+                    <ul className="dropdown-menu w-100 border-0 shadow">
                       <li>
                         <a className="dropdown-item">Date Posted</a>
                       </li>

@@ -51,14 +51,14 @@ const CandidateRightContent = () => {
                     className="btn btn-sm px-5 border select-candidate me-1"
                     title="Accept"
                   >
-                    <MdOutlineDone/>
+                    <MdOutlineDone className="fs-5"/>
                   </button>
                   <button
                     type="button"
                     className="btn btn-sm px-5 border reject-candidate"
                     title="Reject"
                   >
-                    <RxCross2/>
+                    <RxCross2 className="fs-5"/>
                   </button>
                 </div>
                 <div className="col-12 pt-4 row">

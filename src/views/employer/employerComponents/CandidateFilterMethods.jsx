@@ -32,7 +32,7 @@ const CandidateFilterMethods = () => {
                   </span>
                 </span>
             </button>
-            <ul className="dropdown-menu w-75">
+            <ul className="dropdown-menu w-100 border-0 shadow">
               <li>
                 <a className="dropdown-item dropdown-jobList" onClick={()=>handleJobList("Data quality manager","(10-2-2024)")}>Data quality manager <span className="employer-jobList-date">(10-2-2024)</span></a>
               </li>
@@ -63,7 +63,7 @@ const CandidateFilterMethods = () => {
                 </span>
                 
             </button>
-            <ul className="dropdown-menu w-100">
+            <ul className="dropdown-menu w-100 border-0 shadow">
               <li>
                 <a className="dropdown-item dropdown-jobSort" onClick={()=>handleJobStatus("Applied")}>Applied</a>
               </li>
