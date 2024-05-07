@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/2nd/static/css/main.fb60ae0e.css",
-    "main.js": "/2nd/static/js/main.03b12c06.js",
+    "main.js": "/2nd/static/js/main.0811dcaf.js",
     "reactPlayerYouTube.js": "/2nd/static/js/reactPlayerYouTube.52e8ed31.chunk.js",
     "reactPlayerSoundCloud.js": "/2nd/static/js/reactPlayerSoundCloud.9c7614c4.chunk.js",
     "reactPlayerVimeo.js": "/2nd/static/js/reactPlayerVimeo.9575c8ca.chunk.js",
@@ -19,7 +19,7 @@
     "static/media/Self-introduction made with iMovie.mp4": "/2nd/static/media/Self-introduction made with iMovie.6d8806da21d0ce26c036.mp4",
     "index.html": "/2nd/index.html",
     "main.fb60ae0e.css.map": "/2nd/static/css/main.fb60ae0e.css.map",
-    "main.03b12c06.js.map": "/2nd/static/js/main.03b12c06.js.map",
+    "main.0811dcaf.js.map": "/2nd/static/js/main.0811dcaf.js.map",
     "reactPlayerYouTube.52e8ed31.chunk.js.map": "/2nd/static/js/reactPlayerYouTube.52e8ed31.chunk.js.map",
     "reactPlayerSoundCloud.9c7614c4.chunk.js.map": "/2nd/static/js/reactPlayerSoundCloud.9c7614c4.chunk.js.map",
     "reactPlayerVimeo.9575c8ca.chunk.js.map": "/2nd/static/js/reactPlayerVimeo.9575c8ca.chunk.js.map",
@@ -37,6 +37,6 @@
   },
   "entrypoints": [
     "static/css/main.fb60ae0e.css",
-    "static/js/main.03b12c06.js"
+    "static/js/main.0811dcaf.js"
   ]
 }
