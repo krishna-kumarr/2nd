@@ -95,7 +95,7 @@ const CandidateProfile = () => {
       />
 
 
-      <div className={window.location.pathname==="/employer_dashboard/candidates" ? "card border-0" : "card mt-3 border-0 shadow-sm rounded-4"}>
+      <div className={window.location.pathname==="/2nd/employer_dashboard/candidates" ? "card border-0" : "card mt-3 border-0 shadow-sm rounded-4"}>
         <div className="card-body">
           <div className="d-flex justify-content-between ms-1">
             <label className="profile-side-headers d-flex align-items-center placeholder-glow">
@@ -136,7 +136,7 @@ const CandidateProfile = () => {
                   return (
                     <React.Fragment key={skill.id}>
                       <div className="col mt-0">
-                        <div className={window.location.pathname==="/employer_dashboard/candidates" ? "employer-card-skills border rounded-2 p-2 fw-bold mb-4" : "border rounded-2 p-2 fw-bold mb-4"}>
+                        <div className={window.location.pathname==="/2nd/employer_dashboard/candidates" ? "employer-card-skills border rounded-2 p-2 fw-bold mb-4" : "border rounded-2 p-2 fw-bold mb-4"}>
                           {skill.skill_name} -{" "}
                           <span className="fw-normal">
                             {skill.skill_level}
@@ -163,7 +163,7 @@ const CandidateProfile = () => {
 
       <div className="row mt-2 g-3 placeholder-glow">
         <div className="col-12 col-md-6 mb-3 mb-sm-0">
-          <div className={window.location.pathname==="/employer_dashboard/candidates" ? "card border-0" : "card h-100 border-0 shadow-sm rounded-4"}>
+          <div className={window.location.pathname==="/2nd/employer_dashboard/candidates" ? "card border-0" : "card h-100 border-0 shadow-sm rounded-4"}>
             <div className="card-body">
               <div className={`d-flex justify-content-between ms-1 ${videoFullyUploaded || uploadedVideoFile.includes('.mp4') ? "mb-2" : ""}`}>
                 <label className="profile-side-headers d-flex align-items-center">
@@ -215,7 +215,7 @@ const CandidateProfile = () => {
         </div>
 
         <div className="col col-md-6 placeholder-glow">
-          <div className={window.location.pathname==="/employer_dashboard/candidates" ? "card border-0" : "card h-100 border-0 shadow-sm rounded-4"}>
+          <div className={window.location.pathname==="/2nd/employer_dashboard/candidates" ? "card border-0" : "card h-100 border-0 shadow-sm rounded-4"}>
             <div className="card-body">
               <div className="d-flex justify-content-between ms-1">
                 <label className="profile-side-headers d-flex align-items-center">
@@ -273,7 +273,7 @@ const CandidateProfile = () => {
       </div>
 
 
-      <div className={window.location.pathname==="/employer_dashboard/candidates" ? "card border-0" : "card mt-3 border-0 shadow-sm rounded-4 placeholder-glow"}>
+      <div className={window.location.pathname==="/2nd/employer_dashboard/candidates" ? "card border-0" : "card mt-3 border-0 shadow-sm rounded-4 placeholder-glow"}>
               <div className="card-body ">
                 <div className="d-flex justify-content-between ms-1">
                   <label className="profile-side-headers d-flex align-items-center">
