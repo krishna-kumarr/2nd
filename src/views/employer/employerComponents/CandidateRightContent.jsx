@@ -2,6 +2,8 @@ import React from "react";
 import Button from "../../../components/Button/Button";
 import Pdf from "./Pdf";
 import CandidateProfile from "../CandidateProfile";
+import { RxCross2 } from "react-icons/rx";
+import { MdOutlineDone } from "react-icons/md";
 
 
 const CandidateRightContent = () => {
@@ -49,14 +51,14 @@ const CandidateRightContent = () => {
                     className="btn btn-sm px-5 border select-candidate me-1"
                     title="Accept"
                   >
-                    &#x2713;
+                    <MdOutlineDone/>
                   </button>
                   <button
                     type="button"
                     className="btn btn-sm px-5 border reject-candidate"
                     title="Reject"
                   >
-                    &#x2715;
+                    <RxCross2/>
                   </button>
                 </div>
                 <div className="col-12 pt-4 row">

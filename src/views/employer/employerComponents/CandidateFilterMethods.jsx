@@ -19,13 +19,13 @@ const CandidateFilterMethods = () => {
         <div className="col-12 col-md-6 col-lg-4 ">
           <div className="dropdown employer-custom-dropdown w-100">
             <button
-              className="btn dropdown-toggle filter-section px-4 fw-bold d-flex flex-wrap w-100 align-items-center choose-dropdown"
+              className="btn dropdown-toggle filter-section px-4 d-flex flex-wrap w-100 align-items-center choose-dropdown"
               type="button"
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
-              <span className="text-secondary w-25 text-wrap">Choose job role</span>
-                <span className="w-75 ps-1">
+              <span className="fw-bold w-25 text-wrap">Choose job role</span>
+                <span className="text-secondary w-75 ps-1">
                   {jobListContent.jobType}
                   <span className="employer-jobList-date">
                     {jobListContent.date}
@@ -52,13 +52,13 @@ const CandidateFilterMethods = () => {
         <div className="col-12 col-md-6 col-lg-4">
           <div className="dropdown employer-custom-dropdown">
             <button
-              className="btn dropdown-toggle w-100 filter-section fw-bold d-flex flex-wrap align-items-center choose-dropdown"
+              className="btn dropdown-toggle w-100 filter-section d-flex flex-wrap align-items-center choose-dropdown"
               type="button"
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
-               <span className="text-secondary w-25 text-wrap">Choose category</span>
-                <span className="w-75 ps-2">
+               <span className="w-25 text-wrap fw-bold">Choose category</span>
+                <span className="text-secondary w-75 ps-2">
                   {jobStatus}
                 </span>
                 

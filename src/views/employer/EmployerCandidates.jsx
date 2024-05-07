@@ -35,7 +35,7 @@ const EmployerCandidates = () => {
             <CandidateFilterMethods />
           </div>
 
-          <div className={smallDevice ? "mt-1 py-1" : "mt-1 setting-employer-row-height py-1"}>
+          <div className={smallDevice ? "mt-1 py-1 h-100" : "mt-1 setting-employer-row-height py-1"}>
             <div className="row h-100">
               <div className="col-12 col-md-12 col-lg-3 h-100 overflow-scroll">
                 <CandidateLeftContent />
