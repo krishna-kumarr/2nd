@@ -10,7 +10,16 @@ import { RiVideoFill } from 'react-icons/ri'
 import VideoPlayer from '../../components/VideoJS/VideoPlayer'
 import { IoLanguage } from 'react-icons/io5'
 
-const CandidateProfile = () => {
+const CandidateProfile = ({
+  about,
+  experience,
+  education,
+  preference,
+  video,
+  skills,
+  language,
+  additionalInfo,
+}) => {
 
   const [pageContentLoaded, setPageContentLoaded] = useState(!false)
   const [pageRefresh, setPageRefresh] = useState(false)
@@ -30,43 +39,6 @@ const CandidateProfile = () => {
   const [videoFullyUploaded, setVideoFullyUploaded] = useState(false)
 
 
-  useEffect(() => {
-
-    const getPoolPageDetails = async () => {
-      const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6dHJ1ZSwiaWF0IjoxNzE0OTcxMzY0LCJqdGkiOiIyMTM0ZjFlMC1jNjExLTQxMDctOTVhNy0zMTZhOTg0ZTAwNmQiLCJ0eXBlIjoiYWNjZXNzIiwic3ViIjoicHJhZGl2cGpAZ21haWwuY29tIiwibmJmIjoxNzE0OTcxMzY0LCJjc3JmIjoiN2M2NjMyMWEtOTAzMS00ODRhLWIxOTgtYTg1ZGVjYzFhZjI1IiwiZXhwIjoxNzE1MDU3NzY0fQ.7m-Xm38uuQzThaZEkJOOP43WQHTjz4_0FQdjK3uvtq8";
-
-
-      try {
-        await axios
-          .get("https://devapi.2ndcareers.com/professional_profile_dashboard", {
-            headers: {
-              authorization: `Bearer ${token}`,
-            },
-          })
-          .then((response) => {
-            console.log(response)
-            if (response.data.error_code === 0) {
-              setPageContentLoaded(true);
-              setExperienceArrayData(response.data.data.experience);
-              setEducationArrayData(response.data.data.education);
-              setLanguagesArrayData(response.data.data.languages);
-              setSkillsArrayData(response.data.data.skills);
-              setAdditionalInformationArrayData(response.data.data.additional_info)
-            }
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      } catch (err) {
-        console.log(err);
-      }
-    };
-
-    (async () => getPoolPageDetails())();
-
-    console.log(window.location.pathname==='/2nd/employer_dashboard/candidates')
-
-  }, [pageRefresh]);
 
   return (
     <>
@@ -75,7 +47,7 @@ const CandidateProfile = () => {
         cardHeadingIcon={<FaUserTie className={pageContentLoaded ? "me-4 brand-color fs-4" : "me-4  fs-4 placeholder rounded-2"} />}
         cardHeading="About"
         placeholder="About placeholder"
-        cardContent={aboutContent}
+        cardContent={about}
       />
 
       <InfoAddCard
@@ -83,7 +55,7 @@ const CandidateProfile = () => {
         cardHeadingIcon={<PiBagFill className={pageContentLoaded ? "me-4 brand-color fs-4" : "me-4  fs-4 placeholder rounded-2"} />}
         cardHeading="Experience"
         placeholder="Experience placeholder"
-        arrayContent={experienceArrayData}
+        arrayContent={experience}
 
       />
 
@@ -92,7 +64,7 @@ const CandidateProfile = () => {
         cardHeadingIcon={<FaGraduationCap className={pageContentLoaded ? "me-4 brand-color fs-4" : "me-4  fs-4 placeholder rounded-2"} />}
         cardHeading="Education"
         placeholder="Education placeholder"
-        arrayContent={educationArrayData}
+        arrayContent={education}
 
       />
 
@@ -123,7 +95,7 @@ const CandidateProfile = () => {
 
           <div className="d-flex justify-content-between align-items-center">
             <div className="row row-cols-auto ms-5 g-3 profile-descriptions mt-3">
-              {skillsArrayData.length === 0 ? (
+              {skills.length === 0 ? (
                 <p
                   className={
                     pageContentLoaded
@@ -134,7 +106,7 @@ const CandidateProfile = () => {
                   Your skills will be displayed here
                 </p>
               ) : (
-                skillsArrayData.map((skill, index) => {
+                skills.map((skill, index) => {
                   return (
                     <React.Fragment key={skill.id}>
                       <div className="col mt-0">
@@ -160,14 +132,14 @@ const CandidateProfile = () => {
         cardHeadingIcon={<MdAppRegistration className={pageContentLoaded ? "me-4 brand-color fs-4" : "me-4  fs-4 placeholder rounded-2"} />}
         cardHeading="Preference"
         placeholder="Preference placeholder"
-        cardContent={preferenceContent}
+        cardContent={preference}
       />
 
       <div className="row mt-2 g-3 placeholder-glow">
         <div className="col-12 col-md-6 mb-3 mb-sm-0">
           <div className={window.location.pathname==="/2nd/employer_dashboard/candidates" ? "card border-0" : "card h-100 border-0 shadow-sm rounded-4"}>
             <div className="card-body">
-              <div className={`d-flex justify-content-between ms-1 ${videoFullyUploaded || uploadedVideoFile.includes('.mp4') ? "mb-2" : ""}`}>
+              <div className={`d-flex justify-content-between ms-1 ${videoFullyUploaded || video.includes('.mp4') ? "mb-2" : ""}`}>
                 <label className="profile-side-headers d-flex align-items-center">
                   <RiVideoFill
                     className={
@@ -190,7 +162,7 @@ const CandidateProfile = () => {
               </div>
 
               {
-                videoUploadedPlaceholder === true && !uploadedVideoFile.includes('.mp4') ?
+                videoUploadedPlaceholder === true && !video.includes('.mp4') ?
                   <div
                     className={
                       pageContentLoaded
@@ -206,7 +178,7 @@ const CandidateProfile = () => {
                   </div> :
                     <div className="d-flex justify-content-center mb-4">
                       <VideoPlayer
-                        uploadedVideoFile={uploadedVideoFile}
+                        uploadedVideoFile={video}
                         isVideoUploaded={isVideoUploaded}
                       />
                     </div>
@@ -240,7 +212,7 @@ const CandidateProfile = () => {
                 </label>
               </div>
               <div className="ms-5 mt-3 ">
-                {languagesArrayData.length === 0 ? (
+                {language.length === 0 ? (
                   <p
                     className={
                       pageContentLoaded
@@ -252,7 +224,7 @@ const CandidateProfile = () => {
                     to add your language skills!
                   </p>
                 ) : (
-                  languagesArrayData.map((language) => {
+                  language.map((language) => {
                     return (
                       <React.Fragment key={language.id}>
                         <div className="d-flex justify-content-between">
@@ -299,7 +271,7 @@ const CandidateProfile = () => {
                 </div>
 
                 <div className="ms-5 mt-3">
-                  {additionalInformationArrayData.length === 0 ? (
+                  {additionalInfo.length === 0 ? (
                     <p
                       className={
                         pageContentLoaded
@@ -311,7 +283,7 @@ const CandidateProfile = () => {
                       volunteering roles, certifications, awards, etc.
                     </p>
                   ) : (
-                    additionalInformationArrayData.map((info, index) => {
+                    additionalInfo.map((info, index) => {
                       return (
                         <React.Fragment key={index}>
                           <div className="additional-information">

@@ -1,16 +1,29 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import InputGroup from "../../../components/Input/InputGroup";
 import { IoIosSearch } from "react-icons/io";
 import Input from "../../../components/Input/Input";
 
-const CandidateFilterMethods = () => {
-  const [jobListContent,setJobListContent]=useState({jobType:'Data quality manager',date:'(10-2-2024)'});
-  const [jobStatus,setJobStatus]=useState("Applied")
+const CandidateFilterMethods = ({
+  jobRole,
+  handleSearchInput
+}) => {
+  const [jobListContent,setJobListContent]=useState({jobType: '',date:'(10-2-2024)'});
+  const [jobStatus,setJobStatus]=useState("Applied");
+  const jobCategries= ['Applied','Not Reviewed','Shortlisted','Rejected','Contacted','Hired','Recommended']
+            
+
+  //updating states when jobrole length greater than 0
+  useEffect(()=>{
+    if(jobRole.length > 0){
+      setJobListContent({jobType:jobRole[0].job_title,date:''})
+    }
+  },[jobRole])
+
+
 
   const handleJobList = (jobType,date) =>{
     setJobListContent({jobType:jobType,date:date})
   }
-
   const handleJobStatus = (status) =>{
     setJobStatus(status)
   }
@@ -28,23 +41,23 @@ const CandidateFilterMethods = () => {
                 <span className="text-secondary w-75 ps-1">
                   {jobListContent.jobType}
                   <span className="employer-jobList-date">
-                    {jobListContent.date}
+                    {/* {jobListContent.date} */}
                   </span>
                 </span>
             </button>
             <ul className="dropdown-menu w-100 border-0 shadow">
-              <li>
-                <a className="dropdown-item dropdown-jobList" onClick={()=>handleJobList("Data quality manager","(10-2-2024)")}>Data quality manager <span className="employer-jobList-date">(10-2-2024)</span></a>
-              </li>
-              <li>
-                <a className="dropdown-item dropdown-jobList" onClick={()=>handleJobList("Product consultant quality manager","(10-2-2024)")}>Product consultant quality manager <span className="employer-jobList-date">(10-2-2024)</span></a>
-              </li>
-              <li>
-                <a className="dropdown-item dropdown-jobList" onClick={()=>handleJobList("Data quality manager","(10-2-2024)")}>Data quality manager <span className="employer-jobList-date">(10-2-2024)</span></a>
-              </li>
-              <li>
-                <a className="dropdown-item dropdown-jobList" onClick={()=>handleJobList("Data quality manager","(10-2-2024)")}>Data quality manager <span className="employer-jobList-date">(10-2-2024)</span></a>
-              </li>
+              {
+                jobRole.length >0 ? 
+                  jobRole.map((v,i)=>{
+                    return <li key={i}>
+                      <a className="dropdown-item dropdown-jobList" onClick={()=>handleJobList(v.job_title,"(10-2-2024)")}>{v.job_title}<span className="employer-jobList-date">(10-2-2024)</span></a>
+                    </li>
+                  })
+                :
+                  <li>
+                    <a className="dropdown-item dropdown-jobList">No Data Found</a>
+                  </li>
+              }
             </ul>
           </div>
         </div>
@@ -61,30 +74,16 @@ const CandidateFilterMethods = () => {
                 <span className="text-secondary w-75 ps-2">
                   {jobStatus}
                 </span>
-                
             </button>
+
             <ul className="dropdown-menu w-100 border-0 shadow">
-              <li>
-                <a className="dropdown-item dropdown-jobSort" onClick={()=>handleJobStatus("Applied")}>Applied</a>
-              </li>
-              <li>
-                <a className="dropdown-item dropdown-jobSort" onClick={()=>handleJobStatus("Not Reviewed")}>Not Reviewed</a>
-              </li>
-              <li>
-                <a className="dropdown-item dropdown-jobSort" onClick={()=>handleJobStatus("Shortlisted")}>Shortlisted</a>
-              </li>
-              <li>
-                <a className="dropdown-item dropdown-jobSort" onClick={()=>handleJobStatus("Rejected")}>Rejected</a>
-              </li>
-              <li>
-                <a className="dropdown-item dropdown-jobSort" onClick={()=>handleJobStatus("Contacted")}>Contacted</a>
-              </li>
-              <li>
-                <a className="dropdown-item dropdown-jobSort" onClick={()=>handleJobStatus("Hired")}>Hired</a>
-              </li>
-              <li>
-                <a className="dropdown-item dropdown-jobSort" onClick={()=>handleJobStatus("Recommended")}>Recommended</a>
-              </li>
+              {
+                jobCategries.map((v,i)=>{
+                  return <li key={i}>
+                            <a className="dropdown-item dropdown-jobSort" onClick={()=>handleJobStatus(v)}>{v}</a>
+                          </li>
+                })
+              }
             </ul>
           </div>
         </div>
@@ -102,7 +101,7 @@ const CandidateFilterMethods = () => {
               placeHolder="Search by name"
               ariaLabel="default input example"
               testId="searchResult"
-              // functionOnchange={handleSearchInput}
+              functionOnchange={handleSearchInput}
             />
           </div>
         </div>

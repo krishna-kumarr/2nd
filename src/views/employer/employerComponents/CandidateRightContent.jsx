@@ -6,18 +6,24 @@ import { RxCross2 } from "react-icons/rx";
 import { MdOutlineDone } from "react-icons/md";
 
 
-const CandidateRightContent = () => {
-
-  const quesAndAns = [
-    {
-      question:'Do you have any experience matching to the job profile?',
-      answer:'Y or N'
-    },
-    {
-      question:'Could you please provide some insights into your experience and expertise related to matching job profiles?',
-      answer:'Y or N'
-    }
-  ]
+const CandidateRightContent = ({
+  fullName,
+  role,
+  selectedCardId,
+  email,
+  contactNum,
+  address,
+  takeNotes,
+  about,
+  experience,
+  education,
+  preference,
+  video,
+  language,
+  additionalInfo,
+  quesAndAns,
+  skills
+}) => {
 
   
   return (
@@ -39,10 +45,10 @@ const CandidateRightContent = () => {
               <div className="row">
                 <div className="col-lg-6 col-xxl-8">
                   <h1 className="employer-card-candidate-name mb-0 d-inline-block pe-3 border-end border-dark">
-                    Candidate name
+                    {fullName}
                   </h1>
                   <h1 className="employer-card-candidate-role mb-0 d-inline-block ps-3">
-                    Role
+                    {role}
                   </h1>
                 </div>
                 <div className="col-lg-6 col-xxl-4">
@@ -67,7 +73,7 @@ const CandidateRightContent = () => {
                       <b className="employer-card-candidate-name pe-2">
                         Mail :
                       </b>
-                      abc@gmail.com
+                      {email}
                     </p>
                   </div>
                   <div className="col-4">
@@ -83,7 +89,7 @@ const CandidateRightContent = () => {
                       <b className="employer-card-candidate-name pe-2">
                         Phone :
                       </b>
-                      123457890
+                      {contactNum}
                     </p>
                   </div>
                 </div>
@@ -104,7 +110,16 @@ const CandidateRightContent = () => {
           </div>
           
           <div className="col-12 border-bottom border-3 py-4">
-            <CandidateProfile/>
+            <CandidateProfile
+               about={about}
+               experience={experience}
+               education={education}
+               preference={preference}
+               video={video}
+               language={language}
+               additionalInfo={additionalInfo}
+               skills={skills}
+            />
           </div>
 
           <div className="col-12 pt-5">
@@ -138,7 +153,7 @@ const CandidateRightContent = () => {
                     <span className="pe-2">
                     {i+1}.
                     </span>
-                    {v.question}
+                    {v.custom_pre_screen_ques}
                   </p>
                   <div className="px-4">
                     <textarea
@@ -146,7 +161,7 @@ const CandidateRightContent = () => {
                       minLength={25}
                       maxLength={10000}
                       rows={4}
-                      value={v.answer}
+                      value={v.custom_pre_screen_ans}
                     />
                   </div>
                 </div>

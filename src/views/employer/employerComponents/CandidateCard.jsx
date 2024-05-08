@@ -2,7 +2,16 @@ import React from "react";
 import { GrLocation } from "react-icons/gr";
 import { HiOutlineBriefcase } from "react-icons/hi2";
 
-const CandidateCard = ({ applicationStatus,name,role,location }) => {
+const CandidateCard = ({ 
+  professional_id,
+  experience_id,
+  first_name,
+  last_name,
+  profile_image,
+  job_title,
+  city,
+  applicationStatus
+ }) => {
   return (
     <div className="col-12 col-sm-6 col-lg-12 cursorPointer">
       <div className="card border-0 rounded-3">
@@ -11,7 +20,7 @@ const CandidateCard = ({ applicationStatus,name,role,location }) => {
             {/* card image  */}
             <div className="col-4">
               <img
-                src="https://tse4.mm.bing.net/th?id=OIP.eGHa3HgHxIlTHmcvKNDs7AHaGe&pid=Api&P=0&h=180"
+                src={profile_image ? `https://devcdn.2ndcareers.com/${profile_image}` : "https://tse4.mm.bing.net/th?id=OIP.eGHa3HgHxIlTHmcvKNDs7AHaGe&pid=Api&P=0&h=180"}
                 alt="person"
                 width={75}
                 height={75}
@@ -22,16 +31,16 @@ const CandidateCard = ({ applicationStatus,name,role,location }) => {
             {/* card content  */}
             <div className="col-8 px-1 pt-lg-3 pt-xl-0">
               <div className="col-12">
-                <p className="mb-0 employer-card-candidate-name">{name}</p>
+                <p className="mb-0 employer-card-candidate-name">{first_name} {last_name}</p>
 
                 <div className="pt-2">
                 <p className="mb-0 employer-card-candidate-role">
                   <span className="pe-2"><HiOutlineBriefcase/></span>
-                  {role}
+                  {job_title}
                 </p>
                 <p className="mb-0 employer-card-candidate-location">
                   <span className="pe-2"><GrLocation/></span>
-                  {location}
+                  {city}
                 </p>
                 </div>
               </div>

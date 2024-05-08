@@ -5,10 +5,13 @@ import CandidateCard from "./CandidateCard";
 import CandidateFilterWidget from "./CandidateFilterWidget";
 
 
-const CandidateLeftContent = () => {
-
+const CandidateLeftContent = ({
+  skills,
+  candidatesList
+}) => {
+  const [skillData,setSkillData]=useState([]);
   const [open, setOpen] = useState(false);
-
+  
   useEffect(() => {
     // notification box closing fuction
     const handler = (e) => {
@@ -23,42 +26,22 @@ const CandidateLeftContent = () => {
     };
   });
 
-  const cardList = [
-    {applicationStatus:"ai",
-    name:"candidate-1",
-    role:"software engineer",
-    location:"coimbatore"},
 
-    {applicationStatus:"2ndcareers-recommended",
-    name:"candidate-2",
-    role:"software developer",
-    location:"coimbatore"},
+  useEffect(()=>{
+    if(skills!==undefined){
+      skills.map((v,i)=>{
+        return i>=0 ? setSkillData(prevState=>[...prevState,{
+          value:v.id,
+          label:v.skill_name
+        }])
+        :
+        null
+      })
+    }
+  },[skills])
 
-    {applicationStatus:"ai",
-    name:"candidate-3",
-    role:"data analyst",
-    location:"coimbatore"},
 
-    {applicationStatus:"2ndcareers-recommended",
-    name:"candidate-4",
-    role:"data scientist",
-    location:"coimbatore"},
 
-    {applicationStatus:"",
-    name:"candidate-5",
-    role:"front end developer",
-    location:"coimbatore"},
-
-    {applicationStatus:"",
-    name:"candidate-6",
-    role:"back end developer",
-    location:"coimbatore"},
-
-    {applicationStatus:"",
-    name:"candidate-7",
-    role:"full stack developer",
-    location:"coimbatore"},
-  ]
   return (
     <>
       <div className="sticky-top top-0 homePage-backgroundColor">
@@ -98,7 +81,9 @@ const CandidateLeftContent = () => {
                   </div>
 
                   {/* employer-filter-box body */}
-                 <CandidateFilterWidget/>
+                 <CandidateFilterWidget
+                    skillData={skillData}
+                 />
                 </div>
               </div>
             </div>
@@ -108,7 +93,7 @@ const CandidateLeftContent = () => {
         <div className="row py-3 px-0 px-sm-1 align-items-center">
           <div className="col-6 col-sm-6 col-lg-5">
             <p className="text-secondary showing-Persoon-content mb-0">
-              Showing:2 filtered profiles
+              Showing:{candidatesList.length} filtered profiles
             </p>
           </div>
           <div className="col-6 col-sm-6 col-lg-7">
@@ -148,12 +133,16 @@ const CandidateLeftContent = () => {
 
       <div className="row align-content-start gy-2 h-100">
         {
-          cardList.map((v,i)=>{
+          candidatesList.map((v,i)=>{
             return <CandidateCard 
-            applicationStatus={v.applicationStatus}
-            name={v.name}
-            role={v.role}
-            location={v.location}
+              professional_id={v.professional_id}
+              experience_id={v.experience_id}
+              first_name={v.first_name}
+              last_name={v.last_name}
+              profile_image={v.profile_image}
+              job_title={v.job_title}
+              city={v.city}
+              applicationStatus={v.applicationStatus}
             />
           })
         }

@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Select from "react-dropdown-select";
 
-const CandidateFilterWidget = () => {
+const CandidateFilterWidget = ({skillData}) => {
+ 
+
   const options = [
     {
       value: 1,
@@ -39,7 +41,7 @@ const CandidateFilterWidget = () => {
             color="#ffa32d"
             style={{ fontSize: ".9rem" }}
             className="rounded-1"
-            options={options}
+            options={skillData}
             // onChange={(values) => setSkills(values)}
             // values={skills}
           />
