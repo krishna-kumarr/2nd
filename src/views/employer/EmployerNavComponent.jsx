@@ -46,8 +46,8 @@ const EmployerNavComponent = ({ dashboadMenus }) => {
 
 
 
-          <div class="offcanvas-lg offcanvas-start" tabindex="-1" id="offcanvasResponsive" aria-labelledby="offcanvasResponsiveLabel">
-            <div class="offcanvas-header">
+          <div className="offcanvas-lg offcanvas-start" tabindex="-1" id="offcanvasResponsive" aria-labelledby="offcanvasResponsiveLabel">
+            <div className="offcanvas-header">
               <a className="navbar-brand d-flex col-5" href="#">
                 <img
                   src={Images.logo}
@@ -55,9 +55,9 @@ const EmployerNavComponent = ({ dashboadMenus }) => {
                   className="img-fluid logo"
                 />
               </a>
-              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#offcanvasResponsive" aria-label="Close"></button>
+              <button type="button" className="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#offcanvasResponsive" aria-label="Close"></button>
             </div>
-            <div class="offcanvas-body d-inline d-lg-none">
+            <div className="offcanvas-body d-inline d-lg-none">
               <ul className="navbar-nav text-center row">
                 <li className="nav-item navigation-header-link-active py-1 " data-bs-dismiss="offcanvas" data-bs-target="#offcanvasResponsive">
                   <NavLink
@@ -254,7 +254,7 @@ const EmployerNavComponent = ({ dashboadMenus }) => {
               </li>
 
               <li>
-                <button class="btn btn-transparent border d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasResponsive" aria-controls="offcanvasResponsive"><span className="navbar-toggler-icon"></span></button>
+                <button className="btn btn-transparent border d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasResponsive" aria-controls="offcanvasResponsive"><span className="navbar-toggler-icon"></span></button>
               </li>
             </ul>
           </div>

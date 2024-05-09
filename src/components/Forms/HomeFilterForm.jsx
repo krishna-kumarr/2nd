@@ -209,7 +209,7 @@ const HomeFilterForm = () => {
                             FilterArray.workplace_type.length !== 0 ? <>
                                 {FilterArray.workplace_type.map((value, index) => {
                                     return <div className="form-check ms-3" key={index}>
-                                        <Input name={value} functionOnchange={handleWorkplaceType} className="form-check-input" type="checkbox" testId={value} id={`workplace_${value}`} formFieldName={value} formLableFor={`workplace_${value}`} formLableClass={"form-check-label"} />
+                                        <Input name={value} functionOnchange={handleWorkplaceType} className="form-check-input" type="checkbox" testId={value} id={`workplace_${value}`} formFieldName={value} formLableFor={`workplace_${value}`} formLableclassName={"form-check-label"} />
                                     </div>
                                 })}
                             </>
@@ -249,7 +249,7 @@ const HomeFilterForm = () => {
                             FilterArray.job_type.length !== 0 ? <>
                                 {FilterArray.job_type.map((value, index) => {
                                     return <div className="form-check ms-3" key={index}>
-                                        <Input name={value} functionOnchange={handleJobType} className={"form-check-input reset-jobType"} type={"checkbox"} testId={value} id={`workplace_${value}`} formFieldName={value} formLableFor={`workplace_${value}`} formLableClass={"form-check-label"} />
+                                        <Input name={value} functionOnchange={handleJobType} className={"form-check-input reset-jobType"} type={"checkbox"} testId={value} id={`workplace_${value}`} formFieldName={value} formLableFor={`workplace_${value}`} formLableclassName={"form-check-label"} />
                                     </div>
                                 })}
                             </>
@@ -269,7 +269,7 @@ const HomeFilterForm = () => {
                             FilterArray.schedule.length !== 0 ? <>
                                 {FilterArray.schedule.map((value, index) => {
                                     return <div className="form-check ms-3" key={index}>
-                                        <Input name={value} functionOnchange={handleSchedule} className={"form-check-input"} type={"checkbox"} testId={value} id={`workplace_${value}`} formFieldName={value} formLableFor={`workplace_${value}`} formLableClass={"form-check-label"} />
+                                        <Input name={value} functionOnchange={handleSchedule} className={"form-check-input"} type={"checkbox"} testId={value} id={`workplace_${value}`} formFieldName={value} formLableFor={`workplace_${value}`} formLableclassName={"form-check-label"} />
                                     </div>
                                 })}
                             </>

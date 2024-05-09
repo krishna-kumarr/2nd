@@ -2,30 +2,16 @@ import React from "react";
 import { GrLocation } from "react-icons/gr";
 import { HiOutlineBriefcase } from "react-icons/hi2";
 
-const CandidateCard = ({ 
-  professional_id,
-  experience_id,
-  first_name,
-  last_name,
-  profile_image,
-  job_title,
-  city,
-  applicationStatus
- }) => {
+const CandidateCard = ({ jobId,professional_id,first_name,last_name,profile_image,job_title,city,applicationStatus,selectedProfessionalDetails}) => {
+  
   return (
-    <div className="col-12 col-sm-6 col-lg-12 cursorPointer">
+    <div className="col-12 col-sm-6 col-lg-12 cursorPointer" onClick={()=>selectedProfessionalDetails(jobId,professional_id)}>
       <div className="card border-0 rounded-3">
         <div className="card-body">
           <div className="row align-items-center pt-3">
             {/* card image  */}
             <div className="col-4">
-              <img
-                src={profile_image ? `https://devcdn.2ndcareers.com/${profile_image}` : "https://tse4.mm.bing.net/th?id=OIP.eGHa3HgHxIlTHmcvKNDs7AHaGe&pid=Api&P=0&h=180"}
-                alt="person"
-                width={75}
-                height={75}
-                className="img-fluid rounded-circle"
-              />
+              <img src={`https://devcdn.2ndcareers.com/${profile_image}`} alt="" width={83} height={83} className="rounded-circle" />
             </div>
 
             {/* card content  */}
@@ -47,7 +33,7 @@ const CandidateCard = ({
               <div className="appliedOrSaved col-7 col-md-8 col-xl-6 p-0">
                 <div className={`py-1 px-3 employer-borderRadius
                 ${
-                  applicationStatus === "ai"
+                  applicationStatus === "AI recommended"
                     ? "job-shortlisted"
                     : null || 
                     
@@ -61,7 +47,7 @@ const CandidateCard = ({
                       ? "2ndcareers-recommended"
                       : null || 
                       
-                      applicationStatus === "ai"
+                      applicationStatus === "AI recommended"
                       ? "AI Recommendation"
                       : null}
                   </p>

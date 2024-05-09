@@ -1,14 +1,8 @@
 import React from 'react'
 import { IoCalendarOutline, IoLocationOutline } from 'react-icons/io5'
 
-const InfoAddCard = ({
-    pageContentLoaded,
-    cardHeadingIcon,
-    cardHeading,
-    placeholder,
-    arrayContent
-}) => {
-
+const InfoAddCard = ({pageContentLoaded,cardHeadingIcon,cardHeading,placeholder,arrayContent}) => {
+    const duplicateArrayContent=[1,2,3]
 
     const handleDateConvert = (value) =>{
         var Months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
@@ -48,7 +42,8 @@ const InfoAddCard = ({
                                     : ""}
                             </>
                             : 
-                            arrayContent.map((val) => {
+                            pageContentLoaded ?
+                                arrayContent.map((val) => {
                                 return (
                                     <React.Fragment key={val.id}>
 
@@ -81,7 +76,35 @@ const InfoAddCard = ({
                                         }
                                     </React.Fragment>
                                 )
-                            })
+                                })
+                            :
+                                duplicateArrayContent.map((val) => {
+                                    return (
+                                        <React.Fragment key={val.id}>
+
+                                            {
+                                                <div className="ms-5">
+                                                    <div className="d-flex justify-content-between mt-3 ">
+                                                        <label className={window.location.pathname==="/employer_dashboard/candidates" ? "placeholder-glow d-inline-block w-75 employer-card-Content-short-heading" : "profile-inner-headers placeholder-glow d-inline-block w-75"}>
+                                                            {cardHeading === "Experience" ? <span className='placeholder rounded-2 w-50 py-3'></span> : null}
+                                                            {cardHeading === "Education" ? <span className="text-break placeholder rounded-2 w-100 py-4"></span> : null}
+                                                        </label>
+                                                    </div>
+
+
+
+                                                    <label className="profile-descriptions mt-1">
+                                                        <span className='placeholder p-2 rounded-1'></span> &nbsp;-&nbsp;<span className='placeholder px-5 rounded-1'>&nbsp; </span>
+                                                    </label>
+
+                                                    {cardHeading === "Experience" ? <p className={"mt-1 text-break employer-card-Content placeholder rounded-2 py-5 w-100"}>
+                                                    </p> : null}
+                                                    <hr />
+                                                </div>
+                                            }
+                                        </React.Fragment>
+                                    )
+                                })
                     }
                 </div>
             </div>

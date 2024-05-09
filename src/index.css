@@ -2042,6 +2042,11 @@ button[disabled] {
   background-color: #e4f7e6;
   color: #1f662c;
 }
+.shortlisted-candidate {
+  padding: .34rem 0;
+  background-color: #1f662c;
+  color: #e4f7e6;
+}
 
 .reject-candidate {
   padding: .34rem 0;  
@@ -2049,8 +2054,17 @@ button[disabled] {
   color: rgb(255, 99, 99);
 }
 
+.reject-candidate-thick{
+  padding: .34rem 0;  
+  background-color: rgb(255, 99, 99);
+  color: rgb(255, 218, 218);
+}
+
 .candidate-right-side-btn {
   font-size: .9rem;
+}
+.employer-minium-device-height{
+  height: calc(100vh - (var(--nav-height)))
 }
 
 

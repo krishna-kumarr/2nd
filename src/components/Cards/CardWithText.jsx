@@ -48,7 +48,7 @@ const CardWithText = ({
   return (
     <div className="card border-0 shadow-sm h-100 rounded-4 ">
       <Badge currentPlan={currentPlan}/>
-      {/* <span class={`position-absolute top-0 start-50 translate-middle badge rounded-pill btn-brand-color ${checkOutStatus.paymentStatus === "cancelled" && checkOutStatus.productPlan === "Basic" ? 'd-none':''}`}>
+      {/* <span className={`position-absolute top-0 start-50 translate-middle badge rounded-pill btn-brand-color ${checkOutStatus.paymentStatus === "cancelled" && checkOutStatus.productPlan === "Basic" ? 'd-none':''}`}>
         Current Plan
         <span className="visually-hidden">unread messages</span>
       </span> */}

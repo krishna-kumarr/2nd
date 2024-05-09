@@ -1,35 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Select from "react-dropdown-select";
 
-const CandidateFilterWidget = ({skillData}) => {
- 
-
-  const options = [
-    {
-      value: 1,
-      label: "Leanne Graham",
-    },
-    {
-      value: 2,
-      label: "Ervin Howell",
-    },
-    {
-      value: 3,
-      label: "Leanne Graham",
-    },
-    {
-      value: 4,
-      label: "Ervin Howell",
-    },
-    {
-      value:5,
-      label: "Leanne Graham",
-    },
-    {
-      value: 6,
-      label: "Ervin Howell",
-    },
-  ];
+const CandidateFilterWidget = ({skillData,locationData}) => {
 
   return (
     <div className="row g-2 p-3 ">
@@ -56,7 +28,7 @@ const CandidateFilterWidget = ({skillData}) => {
             color="#ffa32d"
             style={{ fontSize: ".9rem" }}
             className="rounded-1"
-            options={options}
+            options={locationData}
             // onChange={(values) => setSkills(values)}
             // values={skills}
           />

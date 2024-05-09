@@ -10,30 +10,60 @@ import { RiVideoFill } from 'react-icons/ri'
 import VideoPlayer from '../../components/VideoJS/VideoPlayer'
 import { IoLanguage } from 'react-icons/io5'
 
-const CandidateProfile = ({
-  about,
-  experience,
-  education,
-  preference,
-  video,
-  skills,
-  language,
-  additionalInfo,
-}) => {
+const CandidateProfile = ({rightSideContent,initialGlow,categorySelectedGlow,cardSelectedGlow}) => {
 
-  const [pageContentLoaded, setPageContentLoaded] = useState(!false)
-  const [pageRefresh, setPageRefresh] = useState(false)
-  const [aboutContent, setAboutContent] = useState("");
-  const [preferenceContent, setPreferenceContent] = useState("");
-  const [experienceArrayData, setExperienceArrayData] = useState([]);
-  const [educationArrayData, setEducationArrayData] = useState([]);
-  const [skillsArrayData, setSkillsArrayData] = useState([]);
-  const [languagesArrayData, setLanguagesArrayData] = useState([]);
-  const [additionalInformationArrayData,setAdditionalInformationArrayData] = useState([])
+  const [about,setAbout]=useState('');
+  const [experience,setExperience]=useState([]);
+  const [education,setEducation]=useState([]);
+  const [preference,setPreference]=useState('');
+  const [video,setVideo]=useState('');
+  const [language,setLanguage]=useState([]);
+  const [additionalInfo,setAdditionalInfo]=useState('');
+  const [skills,setSkills]=useState([]);
+  const dummyLanguage=[1,2,3];
+  const dummyskills=[1,2,3,4,5,6,7,8]
+  const [pageContentLoaded, setPageContentLoaded] = useState(!initialGlow && !categorySelectedGlow && !cardSelectedGlow)
 
 
+  useEffect(()=>{
+    if(pageContentLoaded){
+      if(rightSideContent.about!==undefined ){
+        setAbout(rightSideContent.about);
+      }
+      if(rightSideContent.experience!==undefined ){
+        setExperience(rightSideContent.experience);
+      }
+      if(rightSideContent.education!==undefined){
+        setEducation(rightSideContent.education);
+      }
+      if(rightSideContent.preference!==undefined){
+        setPreference(rightSideContent.preference);
+      }
+      if(rightSideContent.video_name!==undefined){
+        setVideo(`https://devcdn.2ndcareers.com/${rightSideContent.video_name}`)
+      }
+      if(rightSideContent.languages!==undefined){
+        setLanguage(rightSideContent.languages)
+      }
+      if(rightSideContent.additional_info!==undefined){
+        setAdditionalInfo(rightSideContent.additional_info)
+      }
+      if(rightSideContent.skills!==undefined){
+        setSkills(rightSideContent.skills)
+      }
+    }else{
+      setAbout('');
+      setExperience([]);
+      setEducation([]);
+      setPreference('');
+      setVideo('');
+      setLanguage([]);
+      setAdditionalInfo('');
+      setSkills([]);
+    }
+  },[rightSideContent])
 
-  const [uploadedVideoFile, setUploadedVideoFile] = useState("");
+
   const [isVideoUploaded, setIsVideoUploaded] = useState(false)
   const [videoUploadedPlaceholder, setVideoUploadedPlaceholder] = useState(true)
   const [videoFullyUploaded, setVideoFullyUploaded] = useState(false)
@@ -44,7 +74,7 @@ const CandidateProfile = ({
     <>
       <InfoEditCard
         pageContentLoaded={pageContentLoaded}
-        cardHeadingIcon={<FaUserTie className={pageContentLoaded ? "me-4 brand-color fs-4" : "me-4  fs-4 placeholder rounded-2"} />}
+        cardHeadingIcon={<FaUserTie className={pageContentLoaded ? "me-4 brand-color fs-4" : "me-3 fs-4 placeholder rounded-2 p-3"} />}
         cardHeading="About"
         placeholder="About placeholder"
         cardContent={about}
@@ -52,7 +82,7 @@ const CandidateProfile = ({
 
       <InfoAddCard
         pageContentLoaded={pageContentLoaded}
-        cardHeadingIcon={<PiBagFill className={pageContentLoaded ? "me-4 brand-color fs-4" : "me-4  fs-4 placeholder rounded-2"} />}
+        cardHeadingIcon={<PiBagFill className={pageContentLoaded ? "me-4 brand-color fs-4" : "me-3 fs-4 placeholder rounded-2 p-3"} />}
         cardHeading="Experience"
         placeholder="Experience placeholder"
         arrayContent={experience}
@@ -61,7 +91,7 @@ const CandidateProfile = ({
 
       <InfoAddCard
         pageContentLoaded={pageContentLoaded}
-        cardHeadingIcon={<FaGraduationCap className={pageContentLoaded ? "me-4 brand-color fs-4" : "me-4  fs-4 placeholder rounded-2"} />}
+        cardHeadingIcon={<FaGraduationCap className={pageContentLoaded ? "me-4 brand-color fs-4" : "me-3 fs-4 placeholder rounded-2 p-3"} />}
         cardHeading="Education"
         placeholder="Education placeholder"
         arrayContent={education}
@@ -77,7 +107,7 @@ const CandidateProfile = ({
                 className={
                   pageContentLoaded
                     ? "me-4 brand-color fs-4"
-                    : "me-4  fs-3 placeholder rounded-2"
+                    : "me-3 fs-3 placeholder rounded-2 p-3"
                 }
               />
               <span
@@ -95,13 +125,10 @@ const CandidateProfile = ({
 
           <div className="d-flex justify-content-between align-items-center">
             <div className="row row-cols-auto ms-5 g-3 profile-descriptions mt-3">
-              {skills.length === 0 ? (
+              {pageContentLoaded ?
+              skills.length === 0 ? (
                 <p
-                  className={
-                    pageContentLoaded
-                      ? "mt-0 word-space-content px-0 ms-1"
-                      : "placeholder px-3 py-2 mt-0 rounded-1"
-                  }
+                  className={"mt-0 word-space-content px-0 ms-1"}
                 >
                   Your skills will be displayed here
                 </p>
@@ -120,7 +147,22 @@ const CandidateProfile = ({
                     </React.Fragment>
                   );
                 })
-              )}
+              )
+              :
+                <>
+                  {dummyskills.map((skill, index) => {
+                    return (
+                      <React.Fragment key={index}>
+                        <div className="col mt-0">
+                          <div className={"employer-card-skills border rounded-2 p-2 fw-bold mb-4 px-5 py-1 placeholder"}>
+                            <span className="px-3"></span>
+                          </div>
+                        </div>
+                      </React.Fragment>
+                    );
+                  })}
+                </>
+              }
             </div>
           </div>
 
@@ -129,13 +171,13 @@ const CandidateProfile = ({
 
       <InfoEditCard
         pageContentLoaded={pageContentLoaded}
-        cardHeadingIcon={<MdAppRegistration className={pageContentLoaded ? "me-4 brand-color fs-4" : "me-4  fs-4 placeholder rounded-2"} />}
+        cardHeadingIcon={<MdAppRegistration className={pageContentLoaded ? "me-4 brand-color fs-4" : "me-3 p-3 fs-4 placeholder rounded-2"} />}
         cardHeading="Preference"
         placeholder="Preference placeholder"
         cardContent={preference}
       />
 
-      <div className="row mt-2 g-3 placeholder-glow">
+      <div className="row mt-2 g-3 ">
         <div className="col-12 col-md-6 mb-3 mb-sm-0">
           <div className={window.location.pathname==="/2nd/employer_dashboard/candidates" ? "card border-0" : "card h-100 border-0 shadow-sm rounded-4"}>
             <div className="card-body">
@@ -145,14 +187,14 @@ const CandidateProfile = ({
                     className={
                       pageContentLoaded
                         ? "me-4 brand-color fs-3"
-                        : "me-4 fs-1 placeholder rounded-2"
+                        : "me-3 p-3 fs-1 placeholder rounded-2"
                     }
                   />
                   <span
                     className={
                       pageContentLoaded
                         ? ""
-                        : "placeholder px-3 w-100 py-1  rounded-1"
+                        : "placeholder px-3 w-100 py-2  rounded-1"
                     }
                   >
                     Video
@@ -161,7 +203,7 @@ const CandidateProfile = ({
 
               </div>
 
-              {
+              { pageContentLoaded ?
                 videoUploadedPlaceholder === true && !video.includes('.mp4') ?
                   <div
                     className={
@@ -182,14 +224,19 @@ const CandidateProfile = ({
                         isVideoUploaded={isVideoUploaded}
                       />
                     </div>
-
+                :
+                    <div className='placeholder py-5 mt-3 w-100 rounded-2'>
+                      <div className="py-5">
+                        <div className="py-4"></div>
+                      </div>
+                    </div>
               }
             </div>
           </div>
         </div>
 
-        <div className="col col-md-6 placeholder-glow">
-          <div className={window.location.pathname==="/2nd/employer_dashboard/candidates" ? "card border-0" : "card h-100 border-0 shadow-sm rounded-4"}>
+        <div className="col col-md-6">
+          <div className="card border-0">
             <div className="card-body">
               <div className="d-flex justify-content-between ms-1">
                 <label className="profile-side-headers d-flex align-items-center">
@@ -197,7 +244,7 @@ const CandidateProfile = ({
                     className={
                       pageContentLoaded
                         ? "me-4 brand-color fs-4"
-                        : "me-4 fs-4 placeholder rounded-2"
+                        : "me-3 p-3 fs-4 placeholder rounded-2"
                     }
                   />
                   <span
@@ -212,34 +259,50 @@ const CandidateProfile = ({
                 </label>
               </div>
               <div className="ms-5 mt-3 ">
-                {language.length === 0 ? (
-                  <p
-                    className={
-                      pageContentLoaded
-                        ? "mt-1 profile-descriptions ms-1"
-                        : "mt-1 profile-descriptions placeholder rounded-2"
-                    }
-                  >
-                    Looking to make your profile stand out? Don't forget
-                    to add your language skills!
-                  </p>
-                ) : (
-                  language.map((language) => {
+                {pageContentLoaded ?
+                  language.length === 0 ? (
+                    <p
+                      className={
+                        pageContentLoaded
+                          ? "mt-1 profile-descriptions ms-1"
+                          : "mt-1 profile-descriptions placeholder rounded-2"
+                      }
+                    >
+                      Looking to make your profile stand out? Don't forget
+                      to add your language skills!
+                    </p>
+                  ) : (
+                    language.map((language) => {
+                      return (
+                        <React.Fragment key={language.id}>
+                          <div className="d-flex justify-content-between">
+                            <label className="profile-inner-headers">
+                              {language.language_known}
+                            </label>
+                          </div>
+                          <p className="mt-1 profile-descriptions">
+                            {language.language_level}
+                          </p>
+                          <hr />
+                        </React.Fragment>
+                      );
+                    })
+                  )
+              :
+                  <div>
+                    {dummyLanguage.map((language) => {
                     return (
                       <React.Fragment key={language.id}>
                         <div className="d-flex justify-content-between">
-                          <label className="profile-inner-headers">
-                            {language.language_known}
-                          </label>
+                          <label className="profile-inner-headers placeholder rounded-2 py-3 w-25"></label>
                         </div>
-                        <p className="mt-1 profile-descriptions">
-                          {language.language_level}
-                        </p>
+                        <p className="mt-1 profile-descriptions placeholder rounded-2 py-2 pb-3 w-100"></p>
                         <hr />
                       </React.Fragment>
                     );
-                  })
-                )}
+                  })}
+                  </div>
+              }
               </div>
             </div>
           </div>
@@ -255,7 +318,7 @@ const CandidateProfile = ({
                       className={
                         pageContentLoaded
                           ? "me-4 brand-color fs-4"
-                          : "me-4 fs-4 placeholder rounded-2"
+                          : "me-3 p-3 fs-4 placeholder rounded-2"
                       }
                     />
                     <span
@@ -302,7 +365,7 @@ const CandidateProfile = ({
                   )}
                 </div>
               </div>
-            </div>
+      </div>
     </>
   )
 }
