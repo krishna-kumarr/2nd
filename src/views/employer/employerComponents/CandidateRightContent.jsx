@@ -56,7 +56,7 @@ const CandidateRightContent = ({rightSideContent,role,professionalId,jobId,token
       obj = {...obj, job_id:jobId,professional_id:professionalId,status:'invite_to_interview'}
     }else{
       if(appStatus==="Shortlisted" || appStatus==="Rejected"){
-        obj = {...obj, job_id:jobId,professional_id:professionalId,status:"Not Reviewed"}
+        obj = {...obj, job_id:jobId,professional_id:professionalId,status:"not reviewed"}
       }else{
         obj = {...obj, job_id:jobId,professional_id:professionalId,status:applicationStatus}
       }

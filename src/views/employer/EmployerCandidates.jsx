@@ -152,7 +152,6 @@ const EmployerCandidates = () => {
     setCandidatesListDuplicate(searchData)
   }
 
-  console.log(smallDevice)
   return (
     <>
       <div className={smallDevice ? "homePage-backgroundColor employer-minium-device-height overflow-scroll placeholder-glow": "homePage-backgroundColor pt-2 overflow-hidden placeholder-glow"}>
