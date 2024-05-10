@@ -1,7 +1,7 @@
 import React from 'react'
 import { IoCalendarOutline, IoLocationOutline } from 'react-icons/io5'
 
-const InfoAddCard = ({pageContentLoaded,cardHeadingIcon,cardHeading,placeholder,arrayContent}) => {
+const CandidateInfoAddCard = ({pageContentLoaded,cardHeadingIcon,cardHeading,placeholder,arrayContent}) => {
     const duplicateArrayContent=[1,2,3]
 
     const handleDateConvert = (value) =>{
@@ -110,4 +110,4 @@ const InfoAddCard = ({pageContentLoaded,cardHeadingIcon,cardHeading,placeholder,
     )
 }
 
-export default InfoAddCard
+export default CandidateInfoAddCard

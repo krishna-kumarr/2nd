@@ -7,8 +7,8 @@ import Image from "../../../utils/images";
 import axios from "axios";
 
 
-
-const CandidateLeftContent = ({jobId,skills,locationData,candidatesList,selectedProfessionalDetails,setCandidatesListDuplicate,candidatesListDuplicate,initialGlow,categorySelectedGlow}) => {
+ 
+const CandidateLeftContent = ({jobId,skills,locationData,candidatesList,selectedProfessionalDetails,setCandidatesListDuplicate,candidatesListDuplicate,initialGlow,categorySelectedGlow,smallDevice,mellieSearchSkills,setMellieSearchSkills,mellieSearchLocations,setMellieSearchLocations,handleMellieSearch}) => {
 
   const [open, setOpen] = useState(false);
   const dummyCardList=[1,2,3,4,5,6]
@@ -74,11 +74,11 @@ const CandidateLeftContent = ({jobId,skills,locationData,candidatesList,selected
                 break;
         }
     }
-}
+  }
 
   return (
     <>
-      <div className="sticky-top top-0 homePage-backgroundColor">
+      <div className="position-sticky top-0 showing-results-zIndex homePage-backgroundColor">
         <div className="w-100 d-none d-lg-block">
           {initialGlow || categorySelectedGlow ?
             <div className="placeholder card rounded-3 border-0 w-100 py-3"></div>
@@ -121,6 +121,11 @@ const CandidateLeftContent = ({jobId,skills,locationData,candidatesList,selected
                   <CandidateFilterWidget
                       skillData={skills}
                       locationData={locationData}
+                      mellieSearchSkills={mellieSearchSkills}
+                      setMellieSearchSkills={setMellieSearchSkills}
+                      mellieSearchLocations={mellieSearchLocations}
+                      setMellieSearchLocations={setMellieSearchLocations}
+                      handleMellieSearch={handleMellieSearch}
                   />
                   </div>
                 </div>
@@ -212,6 +217,7 @@ const CandidateLeftContent = ({jobId,skills,locationData,candidatesList,selected
             candidatesListDuplicate.map((v,i)=>{
               return <React.Fragment key={i}>
               <CandidateCard 
+                smallDevice={smallDevice}
                 initialGlow={initialGlow}
                 jobId={jobId}
                 professional_id={v.professional_id}

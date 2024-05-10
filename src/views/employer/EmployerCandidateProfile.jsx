@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react'
-import InfoEditCard from '../../components/Cards/InfoEditCard'
 import { FaGraduationCap, FaUserTie } from 'react-icons/fa'
 import { MdAddToPhotos, MdAppRegistration } from 'react-icons/md'
 import { PiBagFill } from 'react-icons/pi'
-import InfoAddCard from '../../components/Cards/InfoAddCard'
+import CandidateInfoAddCard from '../../components/Cards/CandidateInfoAddCard'
 import axios from 'axios'
 import { HiLightBulb } from 'react-icons/hi'
 import { RiVideoFill } from 'react-icons/ri'
 import VideoPlayer from '../../components/VideoJS/VideoPlayer'
 import { IoLanguage } from 'react-icons/io5'
+import CandidateInfoEditCard from '../../components/Cards/CandidateInfoEditCard'
 
-const CandidateProfile = ({rightSideContent,initialGlow,categorySelectedGlow,cardSelectedGlow}) => {
+const EmployerCandidateProfile = ({rightSideContent,initialGlow,categorySelectedGlow,cardSelectedGlow}) => {
 
   const [about,setAbout]=useState('');
   const [experience,setExperience]=useState([]);
@@ -72,7 +72,7 @@ const CandidateProfile = ({rightSideContent,initialGlow,categorySelectedGlow,car
 
   return (
     <>
-      <InfoEditCard
+      <CandidateInfoEditCard
         pageContentLoaded={pageContentLoaded}
         cardHeadingIcon={<FaUserTie className={pageContentLoaded ? "me-4 brand-color fs-4" : "me-3 fs-4 placeholder rounded-2 p-3"} />}
         cardHeading="About"
@@ -80,7 +80,7 @@ const CandidateProfile = ({rightSideContent,initialGlow,categorySelectedGlow,car
         cardContent={about}
       />
 
-      <InfoAddCard
+      <CandidateInfoAddCard
         pageContentLoaded={pageContentLoaded}
         cardHeadingIcon={<PiBagFill className={pageContentLoaded ? "me-4 brand-color fs-4" : "me-3 fs-4 placeholder rounded-2 p-3"} />}
         cardHeading="Experience"
@@ -89,7 +89,7 @@ const CandidateProfile = ({rightSideContent,initialGlow,categorySelectedGlow,car
 
       />
 
-      <InfoAddCard
+      <CandidateInfoAddCard
         pageContentLoaded={pageContentLoaded}
         cardHeadingIcon={<FaGraduationCap className={pageContentLoaded ? "me-4 brand-color fs-4" : "me-3 fs-4 placeholder rounded-2 p-3"} />}
         cardHeading="Education"
@@ -99,7 +99,7 @@ const CandidateProfile = ({rightSideContent,initialGlow,categorySelectedGlow,car
       />
 
 
-      <div className={window.location.pathname==="/2nd/employer_dashboard/candidates" ? "card border-0" : "card mt-3 border-0 shadow-sm rounded-4"}>
+      <div className="card border-0">
         <div className="card-body">
           <div className="d-flex justify-content-between ms-1">
             <label className="profile-side-headers d-flex align-items-center placeholder-glow">
@@ -137,7 +137,7 @@ const CandidateProfile = ({rightSideContent,initialGlow,categorySelectedGlow,car
                   return (
                     <React.Fragment key={skill.id}>
                       <div className="col mt-0">
-                        <div className={window.location.pathname==="/2nd/employer_dashboard/candidates" ? "employer-card-skills border rounded-2 p-2 fw-bold mb-4" : "border rounded-2 p-2 fw-bold mb-4"}>
+                        <div className="employer-card-skills border rounded-2 p-2 fw-bold mb-4">
                           {skill.skill_name} -{" "}
                           <span className="fw-normal">
                             {skill.skill_level}
@@ -154,7 +154,7 @@ const CandidateProfile = ({rightSideContent,initialGlow,categorySelectedGlow,car
                     return (
                       <React.Fragment key={index}>
                         <div className="col mt-0">
-                          <div className={"employer-card-skills border rounded-2 p-2 fw-bold mb-4 px-5 py-1 placeholder"}>
+                          <div className="employer-card-skills border rounded-2 p-2 fw-bold mb-4 px-5 py-1 placeholder">
                             <span className="px-3"></span>
                           </div>
                         </div>
@@ -169,7 +169,7 @@ const CandidateProfile = ({rightSideContent,initialGlow,categorySelectedGlow,car
         </div>
       </div>
 
-      <InfoEditCard
+      <CandidateInfoEditCard
         pageContentLoaded={pageContentLoaded}
         cardHeadingIcon={<MdAppRegistration className={pageContentLoaded ? "me-4 brand-color fs-4" : "me-3 p-3 fs-4 placeholder rounded-2"} />}
         cardHeading="Preference"
@@ -179,7 +179,7 @@ const CandidateProfile = ({rightSideContent,initialGlow,categorySelectedGlow,car
 
       <div className="row mt-2 g-3 ">
         <div className="col-12 col-md-6 mb-3 mb-sm-0">
-          <div className={window.location.pathname==="/2nd/employer_dashboard/candidates" ? "card border-0" : "card h-100 border-0 shadow-sm rounded-4"}>
+          <div className="card border-0">
             <div className="card-body">
               <div className={`d-flex justify-content-between ms-1 ${videoFullyUploaded || video.includes('.mp4') ? "mb-2" : ""}`}>
                 <label className="profile-side-headers d-flex align-items-center">
@@ -310,64 +310,66 @@ const CandidateProfile = ({rightSideContent,initialGlow,categorySelectedGlow,car
       </div>
 
 
-      <div className={window.location.pathname==="/2nd/employer_dashboard/candidates" ? "card border-0" : "card mt-3 border-0 shadow-sm rounded-4 placeholder-glow"}>
-              <div className="card-body ">
-                <div className="d-flex justify-content-between ms-1">
-                  <label className="profile-side-headers d-flex align-items-center">
-                    <MdAddToPhotos
-                      className={
-                        pageContentLoaded
-                          ? "me-4 brand-color fs-4"
-                          : "me-3 p-3 fs-4 placeholder rounded-2"
-                      }
-                    />
-                    <span
-                      className={
-                        pageContentLoaded
-                          ? ""
-                          : "placeholder px-3 w-100 py-1  rounded-1"
-                      }
-                    >
-                      Additional Information
-                    </span>
-                  </label>
-                </div>
+      <div className="card border-0 mt-2">
+        <div className="card-body ">
+          <div className="d-flex justify-content-between ms-1">
+            <label className="profile-side-headers d-flex align-items-center">
+              <MdAddToPhotos
+                className={
+                  pageContentLoaded
+                    ? "me-4 brand-color fs-4"
+                    : "me-3 p-3 fs-4 placeholder rounded-2"
+                }
+              />
+              <span
+                className={
+                  pageContentLoaded
+                    ? ""
+                    : "placeholder px-3 w-100 py-1  rounded-1"
+                }
+              >
+                Additional Information
+              </span>
+            </label>
+          </div>
 
-                <div className="ms-5 mt-3">
-                  {additionalInfo.length === 0 ? (
-                    <p
-                      className={
-                        pageContentLoaded
-                          ? "text-grey ms-1 employer-card-Content"
-                          : "text-grey placeholder rounded-2"
-                      }
-                    >
-                      Add other information such as board positions,
-                      volunteering roles, certifications, awards, etc.
-                    </p>
-                  ) : (
-                    additionalInfo.map((info, index) => {
-                      return (
-                        <React.Fragment key={index}>
-                          <div className="additional-information">
-                            <div className="d-flex justify-content-between ">
-                              <label className="profile-inner-headers ">
-                                {info.title}
-                              </label>
-                            </div>
-                            <ul className="mt-1 profile-descriptions">
-                              <li>{info.description}</li>
-                            </ul>
-                          </div>
-                        </React.Fragment>
-                      );
-                    })
-                  )}
-                </div>
-              </div>
+          <div className="ms-5 mt-3">
+            {additionalInfo.length === 0 ? (
+              <p
+                className={
+                  pageContentLoaded
+                    ? "text-grey ms-1 employer-card-Content"
+                    : "text-grey placeholder rounded-2"
+                }
+              >
+                Add other information such as board positions,
+                volunteering roles, certifications, awards, etc.
+              </p>
+            ) : (
+              additionalInfo.map((info, index) => {
+                return (
+                  <React.Fragment key={index}>
+                    <div className="additional-information">
+                      <div className="d-flex justify-content-between ">
+                        <label className="profile-inner-headers ">
+                          {info.title}
+                        </label>
+                      </div>
+                      <ul className="mt-1 profile-descriptions">
+                        <li>
+                          <p className='text-break'>{info.description}</p>
+                        </li>
+                      </ul>
+                    </div>
+                  </React.Fragment>
+                );
+              })
+            )}
+          </div>
+        </div>
       </div>
     </>
   )
 }
 
-export default CandidateProfile;
+export default EmployerCandidateProfile;

@@ -1,11 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&display=swap");
 
-:root {
-  /* --brand-color: #e38212;
-    --brand-background-color : #f58b0e; 
-    --white-color: #f6f6f6;
-    --grey-color: #808080; */
-
+:root { 
   --nav-height: 4rem;
   --dashboard-menu: 5.5rem;
   --homePage-mainContent-height: calc(
@@ -17,6 +12,20 @@
 }
 
 
+* {
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;  
+}
+.btn-outline-custom-color{
+  border: 1px solid #e38212 !important;
+  }
+
 .location-input:focus{
   border: 1px solid #e38212;
   outline: none; 
@@ -26,20 +35,6 @@
   background: #333;
   border: 1px solid #555;
   color: #EEE;
-}
-
-
-
-* {
-  font-family: "Inter", sans-serif;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Inter", sans-serif;
-  /* background-color: #f3f6f9; */
 }
 
 /* Chrome, Safari, Edge, Opera */
@@ -879,7 +874,6 @@ input:checked + .slider:before {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  padding: .7rem 1rem!important;
 }
 .filter-section.form-select option {
   padding: 15px !important;
@@ -1901,8 +1895,9 @@ button[disabled] {
   top: 3rem;
   right: 0;
   width: 100%;
-  height: 17rem;
+  height: 23rem;
   background-color: white;
+  overflow: scroll;
 }
 
 .showing-Persoon-content {
@@ -2037,27 +2032,27 @@ button[disabled] {
   border-radius: 0 .6rem 0 0;
 }
 
-.select-candidate {
+.select-candidate,.select-candidate:hover {
   padding: .34rem 0;
-  background-color: #e4f7e6;
-  color: #1f662c;
+  background-color: #e4f7e6!important;
+  color: #1f662c!important;
 }
-.shortlisted-candidate {
+.shortlisted-candidate,.shortlisted-candidate:hover {
   padding: .34rem 0;
-  background-color: #1f662c;
-  color: #e4f7e6;
+  background-color: #1f662c!important;
+  color: #e4f7e6!important;
 }
 
-.reject-candidate {
+.reject-candidate,.reject-candidate:hover {
   padding: .34rem 0;  
-  background-color: rgb(255, 218, 218);
-  color: rgb(255, 99, 99);
+  background-color: rgb(255, 218, 218)!important;
+  color: rgb(255, 99, 99)!important;
 }
 
-.reject-candidate-thick{
+.reject-candidate-thick,.reject-candidate-thick:hover{
   padding: .34rem 0;  
-  background-color: rgb(255, 99, 99);
-  color: rgb(255, 218, 218);
+  background-color: rgb(255, 99, 99)!important;
+  color: rgb(255, 218, 218)!important;
 }
 
 .candidate-right-side-btn {
@@ -2120,4 +2115,11 @@ button[disabled] {
 }
 .choose-dropdown{
   font-size: .8rem;
+  padding: .75rem !important;
+}
+.showing-results-zIndex{
+  z-index: 1;
+}
+.setting-employer-noData-available-height{
+  height: calc(100vh - (var(--nav-height) + 5.4rem));
 }

@@ -26,12 +26,13 @@ import EmployerAuth from "./views/employer/EmployerAuth";
 import EmployerCandidates from "./views/employer/EmployerCandidates";
 import EmployerPool from "./views/employer/EmployerPool";
 import EmployerProfile from "./views/employer/EmployerProfile";
+import CandidateRightMinimumDeviceCard from "./views/employer/employerComponents/CandidateRightMinimumDeviceCard";
 
 function App() {
   return (
     <>
       <Toaster />
-      <Routes >
+      <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/forgot_password" element={<ChangePassword />} />
         <Route path="/reset_password" element={<ResetPassword />} />
@@ -70,8 +71,9 @@ function App() {
 
 
         <Route path="employer_dashboard" element={<EmployerAuth />}>
-          <Route path="home" element={<EmployerHome />} />
+          <Route path="home" element={<EmployerHome />}/>
           <Route path="candidates" element={<EmployerCandidates />} />
+          <Route path="candidates/full_details" element={<CandidateRightMinimumDeviceCard />} />
           <Route path="pool" element={<EmployerPool />} />
           <Route path="profile" element={<EmployerProfile />} />
         </Route>

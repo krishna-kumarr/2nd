@@ -1,11 +1,23 @@
 import React from "react";
 import { GrLocation } from "react-icons/gr";
 import { HiOutlineBriefcase } from "react-icons/hi2";
+import { useNavigate } from "react-router-dom";
 
-const CandidateCard = ({ jobId,professional_id,first_name,last_name,profile_image,job_title,city,applicationStatus,selectedProfessionalDetails}) => {
-  
+const CandidateCard = ({ jobId,professional_id,first_name,last_name,profile_image,job_title,city,applicationStatus,selectedProfessionalDetails,smallDevice}) => {
+  const pageRender=useNavigate();
+
+  const handleSelctCard = () =>{
+    if(smallDevice){
+      pageRender("full_details");
+      selectedProfessionalDetails(jobId,professional_id);
+    }else{
+      selectedProfessionalDetails(jobId,professional_id);
+    }
+  }
+
+
   return (
-    <div className="col-12 col-sm-6 col-lg-12 cursorPointer" onClick={()=>selectedProfessionalDetails(jobId,professional_id)}>
+    <div className="col-12 col-sm-6 col-lg-12 cursorPointer" onClick={handleSelctCard}>
       <div className="card border-0 rounded-3">
         <div className="card-body">
           <div className="row align-items-center pt-3">

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const InfoEditCard = ({pageContentLoaded,cardHeadingIcon,cardHeading,placeholder,cardContent}) => {
+const CandidateInfoEditCard = ({pageContentLoaded,cardHeadingIcon,cardHeading,placeholder,cardContent}) => {
     return (
         <>
             <div className="card border-0 ">
@@ -32,4 +32,4 @@ const InfoEditCard = ({pageContentLoaded,cardHeadingIcon,cardHeading,placeholder
     )
 }
 
-export default InfoEditCard
+export default CandidateInfoEditCard

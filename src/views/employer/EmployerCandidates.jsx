@@ -1,34 +1,42 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { IoMdClose } from "react-icons/io";
 import { FiFilter } from "react-icons/fi";
 import CandidateFilterWidget from "./employerComponents/CandidateFilterWidget";
 import CandidateFilterMethods from "./employerComponents/CandidateFilterMethods";
 import CandidateLeftContent from "./employerComponents/CandidateLeftContent";
 import CandidateRightContent from "./employerComponents/CandidateRightContent";
-import axios from "axios";
-import Button from "../../components/Button/Button";
-import CandidateProfile from "./CandidateProfile";
+import employerContext from "../../hooks/employerContext";
 
 
 const EmployerCandidates = () => {
-  const [openWidget, setOpenWidget] = useState(false);
-  const [smallDevice,setSmallDevice] = useState(false);
-  const [candidatesList,setCandidatesList] = useState([]);
-  const [candidatesListDuplicate,setCandidatesListDuplicate] = useState([]);
-  const [jobRole,setJobRole] = useState([]);
-  const [keepNotes,setKeepNotes]=useState('');
-  const [rightSideContent,setRightSideContent]=useState({});
-  const [filterSkills,setFilterSkills]=useState([]);
-  const [filterLocation,setFilterLocation]=useState([]);
-  const [professionalId,setProfessionalId]=useState(0);
-  const [jobId,setJobId]=useState(0);
-  const [role,setRole]=useState('');
-  const [appStatus,setAppStatus]=useState('');
-  const [initialGlow,setInitialGlow]=useState(false);
-  const [cardSelectedGlow,setCardSelectedGlow]=useState(false);
-  const [categorySelectedGlow,setCategorySelectedGlow]=useState(false);
+  
+  const {
+    openWidget, setOpenWidget,
+    smallDevice,setSmallDevice,
+    candidatesList,setCandidatesList,
+    candidatesListDuplicate,setCandidatesListDuplicate,
+    jobRole,setJobRole,
+    keepNotes,setKeepNotes,
+    rightSideContent,setRightSideContent,
+    filterSkills,setFilterSkills,
+    filterLocation,setFilterLocation,
+    professionalId,setProfessionalId,
+    jobId,setJobId,
+    role,setRole,
+    appStatus,setAppStatus,
+    initialGlow,setInitialGlow,
+    cardSelectedGlow,setCardSelectedGlow,
+    categorySelectedGlow,setCategorySelectedGlow,
+    jobStatus,setJobStatus,
+    jobListContent,setJobListContent,
+    getCandidateDatas,selectedProfessionalDetails,
+    handleJobStatus,token,
+    mellieSearchSkills,setMellieSearchSkills,
+    mellieSearchLocations,setMellieSearchLocations,
+    handleMellieSearch
+  }=useContext(employerContext);
 
-  const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6dHJ1ZSwiaWF0IjoxNzE1MjI1NzY4LCJqdGkiOiIwOGVkY2FhMC00MGNjLTQwYWYtYWY3MC04OWVlOTk3NTczNGYiLCJ0eXBlIjoiYWNjZXNzIiwic3ViIjoiZW1wbG95ZXJAYWRyYXByb2R1Y3RzdHVkaW8uY29tIiwibmJmIjoxNzE1MjI1NzY4LCJjc3JmIjoiMGZkYjg1MGMtMGZjZC00NWE3LTk2NjktZDQyODc3OGEzZTc0IiwiZXhwIjoxNzE1MzEyMTY4fQ.gBnuEOxHKJcls-LhjLQ0wmJ_LEyTB6GGMcH89QF5IMI";
+ 
   
   useEffect(()=>{
     //finding minimum devices and updating to state at initial
@@ -57,97 +65,11 @@ const EmployerCandidates = () => {
     getCandidateDatas();
   },[])
 
-  const getCandidateDatas = async()  =>{
-    setInitialGlow(true)
-    var obj={
-      job_id : ""
-    }
-
-    try{
-      await axios.post('https://devapi.2ndcareers.com/candidates_dashboard_view',obj, {
-        headers: {
-          authorization: `Bearer ${token}`,
-        }
-        })
-        .then((res)=>{
-          console.log(res)
-          if(res.data.error_code === 0){
-            setInitialGlow(false)
-            setCandidatesList(res.data.data.candidates_short_desc);
-            setCandidatesListDuplicate(res.data.data.candidates_short_desc);
-            setJobRole(res.data.data.job_list)
-            setRole(res.data.data.candidates_short_desc[0].job_title)
-            setProfessionalId(res.data.data.professional_id)
-            setJobId(res.data.data.job_id)
-            setAppStatus(res.data.data.application_status)
-            setRightSideContent(res.data.data)
-            setKeepNotes(res.data.data.custom_notes===null ? '' : res.data.data.custom_notes)
-
-            //skills data for filter
-            res.data.data.filter_parameters.skill.map((v,i)=>{
-              return i>=0 ? setFilterSkills(prevState=>[...prevState,{
-                value:i+1,
-                label:v
-              }])
-              :
-              null
-            })
-
-            res.data.data.filter_parameters.location.map((v,i)=>{
-              return i>=0 ? setFilterLocation(prevState=>[...prevState,{
-                value:i+1,
-                label:v
-              }])
-              :
-              null
-            })
-
-            console.log(res.data.data)    
-          }
-        })
-    }
-    catch(err){
-      console.log(err)
-    }
-  }
-
-  const selectedProfessionalDetails = async(job_id,professional_id) =>{
-    setCardSelectedGlow(true)
-
-    var obj = {
-      job_id:job_id,
-      professional_id:professional_id
-    }
-
-    try{
-      await axios.post('https://devapi.2ndcareers.com/get_selected_professional_detail',obj, {
-        headers: {
-          authorization: `Bearer ${token}`,
-        }
-        })
-        .then((res)=>{
-          console.log(res)
-          if(res.data.error_code === 0){
-              setCardSelectedGlow(false)
-              setRightSideContent(res.data.data)
-              setRole(res.data.data.experience[0].job_title)
-              setProfessionalId(res.data.data.professional_id)
-              setJobId(res.data.data.job_id)
-              setAppStatus(res.data.data.application_status)
-              setKeepNotes(res.data.data.custom_notes===null ? '' : res.data.data.custom_notes)
-          }
-
-        })
-    }
-    catch(err){
-      console.log(err)
-    }
-  }
 
   const handleSearchInput = (e) => {
     const searchIp = e.target.value.replace(/[\[\]\?\*\+\|\{\}\\\(\)\@\.\n\r]/g ,"");
     const searchData = candidatesList.filter((v)=>{
-      return v.job_title.toLowerCase().match(searchIp.toLowerCase()) || v.first_name.toLowerCase().match(searchIp.toLowerCase()) || v.last_name.toLowerCase().match(searchIp.toLowerCase())
+      return  v.first_name.toLowerCase().match(searchIp.toLowerCase()) || v.last_name.toLowerCase().match(searchIp.toLowerCase())
     })
     setCandidatesListDuplicate(searchData)
   }
@@ -166,6 +88,12 @@ const EmployerCandidates = () => {
               setRightSideContent={setRightSideContent}
               setCategorySelectedGlow={setCategorySelectedGlow}
               handleSearchInput={handleSearchInput}
+              jobStatus={jobStatus}
+              setJobStatus={setJobStatus}
+              jobListContent={jobListContent}
+              setJobListContent={setJobListContent}
+              handleJobStatus={handleJobStatus}
+              getCandidateDatas={getCandidateDatas}
             />
           </div>
 
@@ -189,6 +117,7 @@ const EmployerCandidates = () => {
                 <CandidateLeftContent 
                   initialGlow={initialGlow}
                   categorySelectedGlow={categorySelectedGlow}
+                  smallDevice={smallDevice}
                   candidatesList={candidatesList}
                   candidatesListDuplicate={candidatesListDuplicate}
                   skills={filterSkills}
@@ -197,62 +126,23 @@ const EmployerCandidates = () => {
                   jobId={jobId}
                   setCandidatesListDuplicate={setCandidatesListDuplicate}
                   selectedProfessionalDetails={selectedProfessionalDetails}
+                  mellieSearchSkills={mellieSearchSkills}
+                  setMellieSearchSkills={setMellieSearchSkills}
+                  mellieSearchLocations={mellieSearchLocations}
+                  setMellieSearchLocations={setMellieSearchLocations}
+                  handleMellieSearch={handleMellieSearch}
                 />
               </div>
 
               <div className="col-lg-8 col-xl-9 h-100 d-none d-lg-block">
-                {initialGlow || cardSelectedGlow || categorySelectedGlow ?
-                <div className="card h-100 border-0">
-                  <div className="card-body h-100 overflow-scroll p-lg-4 row">
-                    <div className="col-12">
-                      <div className="container-fluid">
-                        <div className="row border-bottom border-3 py-3">
-                          <div className="col-2 text-center">
-                            <img src={""} alt="..." width={100} height={100} className='pe-none placeholder rounded-circle' />
-                          </div>
-
-                          <div className="col-10">
-                            <div className="row">
-                              <div className="col-lg-6 col-xxl-8">
-                                <h1 className="employer-card-candidate-name mb-0 d-inline-block pe-3 border-end border-dark placeholder w-50 py-3 rounded-1 me-2"></h1>
-                                <h1 className="employer-card-candidate-role mb-0 d-inline-block ps-3 placeholder w-25 py-3 rounded-1"></h1>
-                              </div>
-                              <div className="col-lg-6 col-xxl-4">
-                                <button type="button" className="btn btn-sm px-5 border py-2 me-1 placeholder"></button>
-                                <button type="button" className="btn btn-sm px-5 border py-2 placeholder" ></button>
-                              </div>
-                              <div className="col-12 pt-4 row">
-                                <div className="col-5">
-                                  <p className="employer-card-candidate-role placeholder pt-3 pb-2 w-100 rounded-1"></p>
-                                </div>
-                                <div className="col-4">
-                                  <p className="employer-card-candidate-role placeholder pt-3 pb-2 w-75 rounded-1"></p>
-                                </div>
-                                <div className="col-3">
-                                  <p className="employer-card-candidate-role placeholder pt-3 pb-2 w-75 rounded-1"></p>
-                                </div>
-                              </div>
-                              <div className="col-12">
-                                <button buttonType="button" className="btn col-2 me-4 py-1 placeholder"></button>
-                                <button buttonType="button" className="btn col-1 py-1 placeholder"></button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        
-                        <div className="col-12 border-bottom border-3 py-4">
-                          <CandidateProfile rightSideContent={rightSideContent} initialGlow={initialGlow} categorySelectedGlow={categorySelectedGlow} cardSelectedGlow={cardSelectedGlow}/>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                :
-                <div className={rightSideContent.job_id!==undefined ? "card h-100 border-0" : "card bg-transparent h-100 border-0"}>
-                  <div className={rightSideContent.job_id!==undefined ? "card-body h-100 overflow-scroll p-lg-4 row" : "card-body h-100 overflow-scroll p-lg-4 row justify-content-center align-items-center"}>
-                    {rightSideContent.job_id!==undefined ?
+                <div className={candidatesList.length>0 ? "card h-100 border-0" : "card bg-transparent h-100 border-0"}>
+                  <div className={candidatesList.length>0 ? "card-body h-100 overflow-scroll p-0 row" : "card-body h-100 overflow-scroll p-0 row justify-content-center align-items-center"}>
+                    {candidatesList.length>0 || initialGlow || categorySelectedGlow || cardSelectedGlow ?
                         <CandidateRightContent
+                          initialGlow={initialGlow}
+                          cardSelectedGlow={cardSelectedGlow}
+                          categorySelectedGlow={categorySelectedGlow}
+                          candidatesList={candidatesList}
                           rightSideContent={rightSideContent}
                           role={role}
                           professionalId={professionalId}
@@ -260,14 +150,17 @@ const EmployerCandidates = () => {
                           token={token}
                           keepNotes={keepNotes}
                           setKeepNotes={setKeepNotes}
-                          appStatus={appStatus}                      
+                          appStatus={appStatus}           
+                          jobStatus={jobStatus}
+                          setJobStatus={setJobStatus}
+                          selectedProfessionalDetails={selectedProfessionalDetails}       
+                          handleJobStatus={handleJobStatus}    
                         />
                       :
                         <p className="text-center">Oops! No Data Available</p>
                     }
                   </div>
                 </div>
-              }
               </div>
             </div>
           </div>
@@ -287,8 +180,14 @@ const EmployerCandidates = () => {
 
           <div className="filter-body-content ">
             <CandidateFilterWidget 
+              initialGlow={initialGlow}
               skillData={filterSkills}
               locationData={filterLocation}
+              mellieSearchSkills={mellieSearchSkills}
+              setMellieSearchSkills={setMellieSearchSkills}
+              mellieSearchLocations={mellieSearchLocations}
+              setMellieSearchLocations={setMellieSearchLocations}
+              handleMellieSearch={handleMellieSearch}
             />
           </div>
         </div>

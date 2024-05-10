@@ -12,7 +12,6 @@ const Pdf = ({pdfUrl}) => {
       
 
   function onDocumentLoadSuccess(pdf)  {
-    console.log(pdf)
     setNumPages(pdf?.numPages);
   } 
 
